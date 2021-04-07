@@ -14,7 +14,10 @@ const {SERVER_PORT, DB_CONNECTION, SESSION_SECRET} = process.env
 app.use(session({
     secret: SESSION_SECRET,
     resave: true,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 14
+    }
 }))
 
 //auth endpoints
@@ -25,9 +28,9 @@ app.post('/api/auth/logout', authCtrl.logout);
 
 
 //item endpoints
-app.get('/api/items', itemCtrl.getAllItems);
+app.get('/api/item/all', itemCtrl.getAllItems);
 
-app.post('/api/item', itemCtrl.createItem);
+app.post('/api/item/new', itemCtrl.createItem);
 
 app.get('/api/item/:id', itemCtrl.readItem);
 
