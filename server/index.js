@@ -30,7 +30,7 @@ app.post('/api/auth/logout', authCtrl.logout);
 //item endpoints
 app.get('/api/item/all', itemCtrl.getAllItems);
 
-app.post('/api/item/new', itemCtrl.createItem);
+app.post('/api/item/add', itemCtrl.createItem);
 
 app.get('/api/item/:id', itemCtrl.readItem);
 

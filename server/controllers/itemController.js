@@ -16,7 +16,7 @@ module.exports = {
     createItem: async(req, res) => {
         const db = req.app.get('db')
         const {name, description, price, active} = req.body;
-        const {date_created} = Date()
+        const date_created = new Date()
         newItem = await db.items.create_item(name, description, price, date_created, active)
 
         //NOT SURE HOW TO INSERT INTO item_images multiple rows
