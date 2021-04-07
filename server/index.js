@@ -31,9 +31,9 @@ app.post('/api/item', itemCtrl.createItem);
 
 app.get('/api/item/:id', itemCtrl.readItem);
 
-app.put('/api/item/:id', itemCtrl.editItem);
+app.put('/api/item/:id', itemCtrl.updateItem);
 
-app.put('/api/item/:id', itemCtrl.deactivateItem);
+// app.put('/api/item/:id', itemCtrl.deactivateItem);
 
 app.delete('/api/item/:id', itemCtrl.deleteItem);
 
