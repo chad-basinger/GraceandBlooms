@@ -1,6 +1,6 @@
-require('dotenv').config()
 import React , {useState} from 'react';
 import { uploadFile } from 'react-s3';
+require('dotenv').config()
 
 const {S3_BUCKET, REGION, ACCESS_KEY, SECRET_ACCESS_KEY} = process.env
 

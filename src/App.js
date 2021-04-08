@@ -1,10 +1,9 @@
 import './App.css';
 import UploadImage from './components/AWS-SDK/UploadImage'
-import {storage} from 'aws-amplify'
 import { Component } from 'react';
 
 class App extends Component {
-  Constructor(){
+  constructor(){
     super()
       this.state = {
         imageURL: ''
