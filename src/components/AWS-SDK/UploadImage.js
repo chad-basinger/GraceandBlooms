@@ -1,11 +1,8 @@
+require('dotenv').config()
 import React , {useState} from 'react';
 import { uploadFile } from 'react-s3';
 
-
-const S3_BUCKET ='grace-and-blooms';
-const REGION ='us-west-1';
-const ACCESS_KEY ='AKIA4AVQSQ5PC3UACTW6';
-const SECRET_ACCESS_KEY ='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';
+const {S3_BUCKET, REGION, ACCESS_KEY, SECRET_ACCESS_KEY} = process.env
 
 const config = {
     bucketName: S3_BUCKET,
