@@ -1,6 +1,8 @@
 import './App.css';
 import UploadImage from './components/AWS-SDK/UploadImage'
 import { Component } from 'react';
+import Header from './components/Header/Header'
+import ItemList from './components/ItemList/ItemList'
 
 class App extends Component {
   constructor(){
@@ -15,10 +17,20 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        {/* <Header />
-        <Container /> */}
-        {/* <UploadImageToS3WithNativeSdk/> */}
+        <div className="App-header">
+          <Header />
+        </div>
+        <div>
+          Search Input here, Filter By:
+        </div>
+        <section className="main-section">
+          <div>
+            <ItemList />
+          </div>
+        </section>
+        {/* <div>
         <UploadImage/>
+        </div> */}
       </div>
     );
 

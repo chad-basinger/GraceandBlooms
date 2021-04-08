@@ -13,7 +13,8 @@ item_name varchar(255),
 item_description text,
 item_price money,
 date_created timestamp,
-is_active boolean NOT NULL
+is_active boolean NOT NULL,
+main_img_url text
 )
 
 create table user_cart (
