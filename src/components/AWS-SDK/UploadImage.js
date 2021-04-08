@@ -1,14 +1,14 @@
 import React , {useState} from 'react';
 import { uploadFile } from 'react-s3';
-require('dotenv').config()
+import {S3_BUCKET, REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY} from './s3env'
 
-const {S3_BUCKET, REGION, ACCESS_KEY, SECRET_ACCESS_KEY} = process.env
+
 
 const config = {
     bucketName: S3_BUCKET,
     region: REGION,
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_ACCESS_KEY,
+    accessKeyId: AWS_ACCESS_KEY_ID,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY,
 }
 
 const UploadImage = () => {
