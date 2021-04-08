@@ -1,11 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import UploadImage from './components/AWS-SDK/UploadImage'
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Container />
+      {/* <Header />
+      <Container /> */}
+      {/* <UploadImageToS3WithNativeSdk/> */}
+      <UploadImage/>
     </div>
   );
 }
