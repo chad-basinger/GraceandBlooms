@@ -25,11 +25,36 @@
   /* border-right: 1px solid black; */
 }
 
-header {
+.header {
+  position: relative;
   width: 100vw;
   height: 10vh;
   background-color: pink;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+}
+
+.logo {
+  position: relative;
+  margin-left: 20px;
+  font-size: xx-large;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-right: 20px;
+  
+}
+
+button{
+  background-color: rgb(236, 224, 152);
+  height: 50px;
+  width: 100px;
+  margin-right: 20px;
 }
 
 .item-list {

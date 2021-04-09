@@ -1,0 +1,13 @@
+.Auth {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .auth-choice {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}

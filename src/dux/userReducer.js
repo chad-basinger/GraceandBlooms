@@ -28,10 +28,35 @@ export function logoutUser() {
 }
 export function getSession(userObj) {
     return {
-        type: GET_SESSION,
+        type: GET_USER_SESSION,
         payload: userObj
     }
 }
 
 
 //reducer
+export default function reducer(state= initialState, action){
+    switch(action.type){
+        case REGISTER_USER: 
+            return {
+                ...state,
+                user: action.payload
+            }
+        case LOGIN_USER: 
+            return {
+                ...state,
+                user: action.payload
+            }
+        case LOGOUT_USER: 
+            return initialState
+        
+        case GET_USER_SESSION: 
+            return {
+                ...state,
+                user: action.payload
+            }
+
+
+        default: return state
+    }
+}
