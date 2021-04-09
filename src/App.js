@@ -2,7 +2,7 @@ import './App.css';
 import UploadImage from './components/AWS-SDK/UploadImage'
 import { Component } from 'react';
 import Header from './components/Header/Header'
-import ItemList from './components/ItemList/ItemList'
+import Home from './components/ItemList/Home'
 import axios from 'axios'
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
     super(props)
       this.state = {
         // imageURL: '',
-        items: {}
+        items: []
       }
       this.getAllItems = this.getAllItems.bind(this)
 
@@ -18,7 +18,7 @@ class App extends Component {
 
   componentDidMount(){
     this.getAllItems()
-    console.log(this.state.items)
+    // console.log(this.state.items)
   }
 
   getAllItems() {
@@ -27,16 +27,17 @@ class App extends Component {
     .then(responseItems => {
         console.log('response items', responseItems)
       this.setState({
-        items: responseItems
+        items: responseItems.data
         
       })
-      console.log('state items', this.state.items)
+      // console.log('state items after setState', this.state.items)
     })
     .catch(err => console.log(err.response))
   }
 
 
   render(){
+    // console.log('app render', this.state.items)
     return (
       <div className="App">
         <div className="App-header">
@@ -47,7 +48,7 @@ class App extends Component {
         </div>
         <section className="main-section">
           <div className="item-list">
-            <ItemList itemList={this.state.items}/>
+            <Home itemList={this.state.items}/>
           </div>
         </section>
         {/* <div>
