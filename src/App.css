@@ -31,3 +31,24 @@ header {
   background-color: pink;
   align-items: center;
 }
+
+.item-list {
+  width: 100%;
+  height: 90vh;
+  overflow: auto;
+  background-color: rgb(161, 133, 158);
+  /* background-image: url("https://m.media-amazon.com/images/I/71Fvd7Cx4CL._AC_SL1134_.jpg"); */
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+.individual-item{
+  width: 200px;
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  word-wrap: normal;
+  /* padding: 10px; */
+  margin: 50px;
+}
