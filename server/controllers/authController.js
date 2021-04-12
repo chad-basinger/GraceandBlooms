@@ -4,37 +4,42 @@ module.exports = {
     register: async(req, res) => {
         const db = req.app.get('db');
         const {email, password, age} = req.body;
-        
-        try {
-            const result = await db.users.find_user_by_email([email])
-            const existingUser = result[0]
+        if(email != '' && password != ''){
 
-            if(existingUser){
-                return res.status(409).send('Username exists already')
-            }
-
-            const salt = bcrypt.genSaltSync(10)
-            const hash = bcrypt.hashSync(password, salt)
-            
-
-            //add the user to the db and get back their id
-            const registeredUser = await db.users.create_user([email, hash, age])
-            //create a session for the user using the db response
-            const user = registeredUser[0];
-            req.session.user = {
-                id: user.id,
-                email: user.email,
-                age: user.age,
-                isAdmin: user.is_admin
+            try {
+                const result = await db.users.find_user_by_email([email])
+                const existingUser = result[0]
+    
+                if(existingUser){
+                    return res.status(409).send('Email  already registered')
+                }
+    
+                const salt = bcrypt.genSaltSync(10)
+                const hash = bcrypt.hashSync(password, salt)
                 
+    
+                //add the user to the db and get back their id
+                const registeredUser = await db.users.create_user([email, hash, age])
+                //create a session for the user using the db response
+                const user = registeredUser[0];
+                req.session.user = {
+                    id: user.id,
+                    email: user.email,
+                    age: user.age,
+                    isAdmin: user.is_admin
+                    
+                }
+    
+                //send a response that includes the user session info
+                res.status(201).send(req.session.user)
             }
-
-            //send a response that includes the user session info
-            res.status(201).send(req.session.user)
+            catch(err){
+                console.log(err)
+                return res.sendStatus(500)
+            }
         }
-        catch(err){
-            console.log(err)
-            return res.sendStatus(500)
+        else {
+            return 'please fill in your email and password'
         }
 
     },

@@ -11,11 +11,14 @@ class Auth extends Component {
         this.state ={
             mode: 'register',
             email: '',
-            password: ''
+            password: '',
+            age: null,
         }
+        // this.handleMode = this.handleMode.bind(this)
     }
 
     handleMode = e => {
+        // console.log(e.target.name)
         this.setState({mode: e.target.name})
     }
 
@@ -27,7 +30,7 @@ class Auth extends Component {
 
     handleSubmit = () => {
         const {mode, email, password} = this.state;
-        const {path} = mode === 'register' ? 'register' : 'login'
+        const path = mode === 'register' ? 'register' : 'login'
 
         axios.post(`/api/auth/${path}`, {email, password})
         .then(res => {
@@ -40,13 +43,14 @@ class Auth extends Component {
 
     render(){
         const {mode} = this.state;
+        // console.log(mode)
         return (
             <section className ='auth'>
                 <div className='auth-choice'>
-                    <button name='register' onclick={this.handleMode} disabled={mode === 'register'}>
+                    <button name='register' onClick={this.handleMode} disabled={mode === 'register'}>
                         Register
                     </button>
-                    <button name='sign-in' onclick={this.handleMode} disabled={mode === 'sign in'}>
+                    <button name='sign-in' onClick={this.handleMode} disabled={mode === 'sign-in'}>
                         Sign In
                     </button>
                 </div>
@@ -55,6 +59,7 @@ class Auth extends Component {
                 <div>
                     <input placeholder='email' name='email' onChange={this.handleInput}/>
                     <input placeholder='password' name='password' onChange={this.handleInput}/>
+                    <input placeholder='age' name='age' onChange={this.handleInput}/>
                     <button onClick={this.handleSubmit}>Submit</button>
                 </div>
             </section>
