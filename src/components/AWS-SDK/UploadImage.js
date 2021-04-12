@@ -26,9 +26,9 @@ const UploadImage = () => {
     }
 
     return <div>
-        <div>React S3 File Upload</div>
+        <div>Select file</div>
         <input type="file" onChange={handleFileInput}/>
-        <button onClick={() => handleUpload(selectedFile)}> Upload to S3</button>
+        <button onClick={() => handleUpload(selectedFile)}>Upload Image</button>
     </div>
 }
 
