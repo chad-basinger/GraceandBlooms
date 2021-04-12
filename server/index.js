@@ -5,6 +5,7 @@ const session = require('express-session')
 const app = express()
 const authCtrl = require('./controllers/authController')
 const itemCtrl = require('./controllers/itemController')
+const adminCtrl = require('./controllers/adminController')
 
 
 app.use(express.json())
@@ -36,9 +37,12 @@ app.get('/api/item/:id', itemCtrl.readItem);
 
 app.put('/api/item/:id', itemCtrl.updateItem);
 
-// app.put('/api/item/:id', itemCtrl.deactivateItem);
-
 app.delete('/api/item/:id', itemCtrl.deleteItem);
+
+//admin endpoints
+app.post('/api/admin/addSizeAndPrice', adminCtrl.addSizePrice)
+
+app.get('/api/admin/getAllSizes', adminCtrl.getAllSizes)
 
 
 massive({

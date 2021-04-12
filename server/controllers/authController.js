@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 module.exports = {
     register: async(req, res) => {
         const db = req.app.get('db');
-        const {email, password, age} = req.body;
+        const {email, password} = req.body;
         if(email != '' && password != ''){
 
             try {
@@ -19,13 +19,12 @@ module.exports = {
                 
     
                 //add the user to the db and get back their id
-                const registeredUser = await db.users.create_user([email, hash, age])
+                const registeredUser = await db.users.create_user([email, hash])
                 //create a session for the user using the db response
                 const user = registeredUser[0];
                 req.session.user = {
                     id: user.id,
                     email: user.email,
-                    age: user.age,
                     isAdmin: user.is_admin
                     
                 }
@@ -45,7 +44,7 @@ module.exports = {
     },
     login: async(req, res) => {
         const {email, password} = req.body
-        const foundUser = await req.app.get('db').user.find_user_by_email([email])
+        const foundUser = await req.app.get('db').users.find_user_by_email([email])
 
         const user = foundUser[0]
         console.log(user, 'user')

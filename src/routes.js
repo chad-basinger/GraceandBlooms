@@ -5,6 +5,7 @@ import Home from './components/ItemList/Home'
 import ViewItem from './components/ViewItem'
 import ViewCart from './components/Checkout/ViewCart'
 import Auth from './components/User/Auth'
+import AdminSettings from './components/ItemForm/AdminSettings'
 
 export default(
     <Switch>
@@ -15,5 +16,6 @@ export default(
         <Route path='/editItem' component={EditItem}/>
         <Route path='/viewCart' component={ViewCart}/>
         <Route path='/auth' component={Auth}/>
+        <Route path='/admin/settings' component={AdminSettings}/>
     </Switch>
 )

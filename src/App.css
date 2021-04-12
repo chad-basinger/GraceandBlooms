@@ -50,7 +50,8 @@
   
 }
 
-button{
+/* all buttons under the nav */
+nav button{
   background-color: rgb(236, 224, 152);
   height: 50px;
   width: 100px;
@@ -86,4 +87,13 @@ img {
   height: 80%;
   background-color: white;
   border-radius: 90 / 99;
+}
+
+.size-price {
+  display: flex;
+  flex-direction: row;
+}
+
+.size-price button {
+  float: right;
 }

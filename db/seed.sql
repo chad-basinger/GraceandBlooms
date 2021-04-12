@@ -41,7 +41,17 @@ item_id integer references items(item_id),
 image_url varchar(255)
 )
 
+create table item_sizes (
+size_id serial primary key,
+size varchar(255),
+size_price money
+)
+
 
 insert into items (item_name, item_description, item_price, date_created, is_active)
 VALUES ('pink bracelet', 'very pink bracelet made with beads', 12.99, '04-06-21 12:00:17', true)
+
+insert into item_sizes
+(size, size_price)
+values ('3.5cmm-5cmm', 10.99)
 
