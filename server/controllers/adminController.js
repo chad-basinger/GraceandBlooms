@@ -24,5 +24,16 @@ module.exports = {
             console.log(err)
             res.sendStatus(500)
         }
+    },
+    deleteSize: async(req, res) => {
+        const db = req.app.get('db')
+        try {
+            const allSizes = await db.admin.deleteSize()
+            res.status(200).send(allSizes)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
     }
 }

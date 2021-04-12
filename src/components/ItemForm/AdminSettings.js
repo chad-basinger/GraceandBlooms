@@ -53,6 +53,8 @@ class AdminSettings extends Component {
     
 
     render(){
+        
+        
         return (
             <div>
                 <div>
@@ -74,6 +76,7 @@ class AdminSettings extends Component {
                 </div>
             </div>
         )
+         
     }
 }
 

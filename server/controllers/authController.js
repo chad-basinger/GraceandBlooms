@@ -53,22 +53,27 @@ module.exports = {
             return res.status(401).send('Username does not exist.')
         }
 
-        const isAuthenticated = bcrypt.compareSync(password, user.password);
+        const isAuthenticated = bcrypt.compareSync(password, user.hash);
 
         if (!isAuthenticated) {
             return res.status(403).send('Incorrect password');
           }
           
         req.session.user = {
-            id: user.id,
-            username: user.username,
-            profile_pic: user.profile_pic
+            id: user.user_id,
+            email: user.email,
+            is_admin: user.is_admin
         }
         console.log(req.session, 'session')
         return res.send(req.session.user)
     },
     getSessionUser: async(req, res) => {
-        return res.sendStatus(200)
+        if(req.session.user) {
+            res.status(200).send(req.session.user)
+        }
+        else{
+            res.sendStatus(403)
+        }
     },
     logout: async(req, res) => {
         req.session.destroy();

@@ -6,6 +6,7 @@ const app = express()
 const authCtrl = require('./controllers/authController')
 const itemCtrl = require('./controllers/itemController')
 const adminCtrl = require('./controllers/adminController')
+const auth = require('./middleware/authMiddleware');
 
 
 app.use(express.json())
@@ -31,18 +32,20 @@ app.post('/api/auth/logout', authCtrl.logout);
 //item endpoints
 app.get('/api/item/all', itemCtrl.getAllItems);
 
-app.post('/api/item/add', itemCtrl.createItem);
+app.post('/api/item/add', auth.adminsOnly, itemCtrl.createItem);
 
 app.get('/api/item/:id', itemCtrl.readItem);
 
-app.put('/api/item/:id', itemCtrl.updateItem);
+app.put('/api/item/:id', auth.adminsOnly, itemCtrl.updateItem);
 
-app.delete('/api/item/:id', itemCtrl.deleteItem);
+app.delete('/api/item/:id', auth.adminsOnly, itemCtrl.deleteItem);
 
-//admin endpoints
-app.post('/api/admin/addSizeAndPrice', adminCtrl.addSizePrice)
+//size/price endpoints
+app.post('/api/admin/addSizeAndPrice', auth.adminsOnly, adminCtrl.addSizePrice)
 
-app.get('/api/admin/getAllSizes', adminCtrl.getAllSizes)
+app.get('/api/admin/getAllSizes', auth.adminsOnly, adminCtrl.getAllSizes)
+
+app.delete('/api/admin/size/:id', auth.adminsOnly, adminCtrl.deleteSize)
 
 
 massive({
