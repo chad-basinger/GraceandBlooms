@@ -1,5 +1,8 @@
 import axios from 'axios'
+import {connect} from 'react-redux'
+import {getAllItems} from '../../dux/itemReducer'
 const { Component } = require("react");
+
 
 
 class Home extends Component {
@@ -83,4 +86,8 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStateToProps = reduxState => {
+    return reduxState.itemReducer
+}
+
+export default connect(mapStateToProps, {getAllItems})(Home);

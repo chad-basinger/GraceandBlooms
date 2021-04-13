@@ -27,7 +27,7 @@ class CheckoutForm extends Component {
   render() {
     return (
       <div>
-        <div class="product-info">
+        <div className="product-info">
           <h3 className="product-title">Checkout</h3>
           <h4 className="product-price">$999</h4>
         </div>

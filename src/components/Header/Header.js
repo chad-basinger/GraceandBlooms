@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {logoutUser} from '../../dux/userReducer'
 import axios from 'axios'
 
 // import session from 'express-session'
@@ -13,6 +15,11 @@ class Header extends Component {
         // what do?
         axios
         .post('/api/auth/logout')
+        .then(res => {
+            this.props.logoutUser(res.data)
+            console.log(res.data)
+        })
+        .catch (err => console.log(err))
         
     }
 
@@ -26,7 +33,7 @@ class Header extends Component {
     
     render(){
         //SHOW THE FOLLOWING IF USER IS ADMIN
-        // console.log()
+        console.log()
         // if(this.user){
         //     return (
         //         <div className='header'>
@@ -89,9 +96,9 @@ class Header extends Component {
     }
     
 
-// const mapStateToProps = reduxState => {
-//     return reduxState;
+const mapStateToProps = reduxState => {
+    return reduxState;
 
-// }
+}
 
-export default Header;
+export default connect(mapStateToProps, {logoutUser})(Header);

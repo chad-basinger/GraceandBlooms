@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Component } from 'react';
 import './auth.scss';
 import {connect} from 'react-redux'
-import {loginUser} from '../../dux/userReducer'
+import {loginUser, logoutUser} from '../../dux/userReducer'
 
 
 class Auth extends Component {
@@ -34,6 +34,7 @@ class Auth extends Component {
         axios.post(`/api/auth/${path}`, {email, password})
         .then(res => {
             this.props.loginUser(res.data)
+            console.log(res.data)
         })
         .catch (err => console.log(err))
     }
@@ -88,5 +89,9 @@ class Auth extends Component {
     }
 }
 
-export default connect(null, {loginUser})(Auth);
+const mapStateToProps = reduxState => {
+    return reduxState;
+}
+
+export default connect(mapStateToProps, {loginUser})(Auth);
 

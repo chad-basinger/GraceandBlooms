@@ -1,5 +1,8 @@
+const { findAllByTestId } = require("@testing-library/dom");
+
 const initialState = {
-    user: null
+    user: '',
+    isLoggedIn: findAllByTestId
 }
 
 const REGISTER_USER = 'REGISTER_USER'
@@ -45,7 +48,8 @@ export default function reducer(state= initialState, action){
         case LOGIN_USER: 
             return {
                 ...state,
-                user: action.payload
+                user: action.payload,
+                isLoggedIn: true
             }
         case LOGOUT_USER: 
             return initialState

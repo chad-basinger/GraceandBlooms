@@ -1,4 +1,6 @@
 import { CardElement } from "@stripe/react-stripe-js";
+import { findByLabelText } from "@testing-library/dom";
+import reportWebVitals from "../../reportWebVitals";
 
 const CARD_ELEMENT_OPTIONS = {
   iconStyle: "solid",
@@ -25,7 +27,7 @@ const CARD_ELEMENT_OPTIONS = {
 
 export default function CardSection() {
   return (
-        <label>
+        <label className='card-section'>
             Card details
             <CardElement options={CARD_ELEMENT_OPTIONS} />
         </label>
