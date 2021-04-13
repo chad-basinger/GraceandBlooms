@@ -6,6 +6,7 @@ import ViewItem from './components/ViewItem'
 import ViewCart from './components/Checkout/ViewCart'
 import Auth from './components/User/Auth'
 import AdminSettings from './components/ItemForm/AdminSettings'
+import CheckoutComponent from './components/Checkout/CheckoutComponent'
 
 export default(
     <Switch>
@@ -14,8 +15,9 @@ export default(
         <Route path='/addItem' component={AddItem}/>
         <Route path='/viewItem' component={ViewItem}/>
         <Route path='/editItem' component={EditItem}/>
-        <Route path='/viewCart' component={ViewCart}/>
+        <Route exact path='/viewCart' component={ViewCart}/>
         <Route path='/auth' component={Auth}/>
         <Route path='/admin/settings' component={AdminSettings}/>
+        <Route path='/viewCart/checkout' component={CheckoutComponent}/>
     </Switch>
 )

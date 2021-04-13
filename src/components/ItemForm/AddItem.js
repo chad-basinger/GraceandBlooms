@@ -8,6 +8,7 @@ class AddItem extends Component {
             name: '',
             description: '',
             main_img_url: '',
+            image_urls: []
             
         }
     }

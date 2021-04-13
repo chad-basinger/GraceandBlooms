@@ -3,15 +3,12 @@ import { Component } from 'react';
 import Header from './components/Header/Header'
 import routes from './routes'
 
+
 class App extends Component {
   // constructor(){
   //   super()
       
   // }
-
-  
-
-
   render(){
     // console.log('app render', this.state.items)
     return (
@@ -26,9 +23,8 @@ class App extends Component {
             <Home itemList={this.state.items}/>
           </div> */}
         </section>
-        {/* <div>
-        <UploadImage/>
-        </div> */}
+        
+        
       </div>
     );
 
