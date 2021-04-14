@@ -5,13 +5,52 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {HashRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
-import store from './dux/store'
+
+//store
+import {store} from './dux/store'
+import { saveState } from './localStorage';
+
+// const cartItems = [
+//   {
+//     id: 1,
+//     title: "Samsung",
+//     price: 799.99,
+//     img:
+//       "shorturl.at/ajkq9",
+//     amount: 1
+//   },
+//   {
+//     id: 2,
+//     title: "Google pixel Max",
+//     price: 399.99,
+//     img:
+//       "shorturl.at/ajkq9",
+//     amount: 1
+//   },
+//   {
+//     id: 3,
+//     title: "Xiaomi",
+//     price: 999.99,
+//     img:
+//       "shorturl.at/ajkq9",
+//     amount: 1
+//   }
+// ];
+
+store.subscribe(() => {
+  saveState({
+    cart: store.getState().cart,
+    total: store.getState().total,
+    amount: store.getState().amount
+  });
+});
+
 
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
       <Provider store={store}>
-      <App />
+      <App/>
       </Provider>
     </HashRouter>
   </React.StrictMode>,
