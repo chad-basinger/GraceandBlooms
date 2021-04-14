@@ -53,5 +53,9 @@ VALUES ('pink bracelet', 'very pink bracelet made with beads', 12.99, '04-06-21 
 
 insert into item_sizes
 (size, size_price)
-values ('3.5cmm-5cmm', 10.99)
+values ('3.5cmm-5cmm', 10.99),
+('2.5cmm-3.5cmm', 9.99),
+('1cmm-2.5cmm', 7.99),
+('5cmm-7cmm', 12.99),
+('7cmm-9cmm', 13.99)
 

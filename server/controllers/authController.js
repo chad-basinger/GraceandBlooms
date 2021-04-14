@@ -64,7 +64,7 @@ module.exports = {
             email: user.email,
             is_admin: user.is_admin
         }
-        console.log(req.session, 'session')
+        console.log('session', req.session.user)
         return res.send(req.session.user)
     },
     getSessionUser: async(req, res) => {

@@ -7,10 +7,15 @@ import axios from 'axios'
 // import session from 'express-session'
 
 class Header extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
+        
     }
     
+    // componentDidMount = () => {
+    //     this.props.getSession()
+    // }
+
     handleLogout = () => {
         // what do?
         axios
@@ -23,46 +28,40 @@ class Header extends Component {
         
     }
 
-    // ComponentDidMount = () => {
-    //     axios.get('/api/auth/me')
-    //     .then(res => {
-    //         session = res.data
-    //     })
-    // }
 
     
     render(){
         //SHOW THE FOLLOWING IF USER IS ADMIN
-        console.log()
-        // if(this.user){
-        //     return (
-        //         <div className='header'>
-        //             <h1 className='logo'>Grace and Blooms Bracelet Co.</h1>
+        console.log(this.props, 'REDUX STATE user')
+        if(!this.props.user.is_admin){
+            return (
+                <div className='header'>
+                    <h1 className='logo'>Grace and Blooms Bracelet Co.</h1>
                     
-        //             <nav className='nav-menu'>
-        //                 <Link to='/'>
-        //                 <button>Home</button>
-        //                 </Link>
-        //                 <Link to='/viewCart'>
-        //                 <button>View Cart</button>
-        //                 </Link>
-        //                 {/* <Link to='/addItem'>
-        //                 <button>Add Item</button>
-        //                 </Link> */}
-        //                 {/* <Link to='/admin/settings'>
-        //                 <button>Admin Settings</button>
-        //                 </Link> */}
-        //                 <Link to='/auth'>
-        //                 <button>Login</button>
-        //                 </Link>
-        //                 <button onClick={this.handleLogout}>Logout</button>
-        //             </nav>
+                    <nav className='nav-menu'>
+                        <Link to='/'>
+                        <button>Home</button>
+                        </Link>
+                        <Link to='/viewCart'>
+                        <button>View Cart</button>
+                        </Link>
+                        {/* <Link to='/addItem'>
+                        <button>Add Item</button>
+                        </Link> */}
+                        {/* <Link to='/admin/settings'>
+                        <button>Admin Settings</button>
+                        </Link> */}
+                        <Link to='/auth'>
+                        <button>Login</button>
+                        </Link>
+                        <button onClick={this.handleLogout}>Logout</button>
+                    </nav>
                     
                         
-        //         </div>
-        //     )
+                </div>
+            )
                     
-        // }else {
+        }else {
             return (
                 <div className='header'>
                     <h1 className='logo'>Grace and Blooms Bracelet Co.</h1>
@@ -92,12 +91,13 @@ class Header extends Component {
                 </div>
             )
         }
+    }
        
     }
     
 
 const mapStateToProps = reduxState => {
-    return reduxState;
+    return reduxState.userReducer;
 
 }
 

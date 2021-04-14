@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {getAllItems} from '../../dux/itemReducer'
+// import {getSession} from '../../dux/userReducer'
 const { Component } = require("react");
 
 
@@ -17,6 +18,7 @@ class Home extends Component {
 
     componentDidMount(){
         this.getAllItems()
+        // this.props.getSession()
         // console.log(this.state.items)
       }
     
@@ -42,6 +44,7 @@ class Home extends Component {
     
 
     render(){
+        console.log('redux state user', this.props.user)
         console.log('home render this.state', this.state.items)
         // let itemListings = this.props.itemList.map((element, index) => {
         //     return (
@@ -55,8 +58,8 @@ class Home extends Component {
         // )
 
         return (
-            //when I have the map uncommented, the props doesn't load correctly. Need to ask for help from instructors.
             <div>
+                
                 <div className='tool-bar-for-item-list'>
                     Search Input here, Filter By:
                 </div>
@@ -79,6 +82,9 @@ class Home extends Component {
                         </div>
                     )}) 
                     }
+                </div>
+                <div className='star-five'>
+
                 </div>
 
             </div>

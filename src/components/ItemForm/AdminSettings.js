@@ -50,10 +50,17 @@ class AdminSettings extends Component {
         this.setState({size: ''})
         this.setState({price: ''})
     }
+
+    handleDelete(id){
+        axios.delete(`/api/admin/size/${id}`)
+        .then(_ => this.getAllSizes())
+    }
+
+
     
 
     render(){
-        
+        console.log(this.state.sizeList)
         
         return (
             <div>
@@ -66,10 +73,14 @@ class AdminSettings extends Component {
                     {this.state.sizeList.map((el, index) => {
                         return (
                             <div className='size-price' key={index}>
-                                <p>{el.size}</p>
-                                <p>- - - - - - - - - </p>
-                                <p>{el.size_price}</p>
-                                <button>Delete</button>
+                                <div className='size-price-listed'>
+                                    <p>{el.size}</p>
+                                    <p> / </p>
+                                    <p>{el.size_price}</p>
+                                </div>
+                                <div>
+                                    <button onClick={_ => this.handleDelete(el.size_id)}>Delete</button>
+                                </div>
                             </div>
                         )
                     })}

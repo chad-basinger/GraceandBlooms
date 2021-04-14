@@ -33,17 +33,30 @@ class Auth extends Component {
 
         axios.post(`/api/auth/${path}`, {email, password})
         .then(res => {
-            this.props.loginUser(res.data)
+            
             console.log(res.data)
+            this.props.loginUser(res.data)
+            this.showToast()
         })
-        .catch (err => console.log(err))
+        .catch (err => console.error(err))
+    }
+
+    showToast() {
+        // Get the snackbar DIV
+        var x = document.getElementById("success");
+      
+        // Add the "show" class to DIV
+        x.className = "show";
+      
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
 
 
 
     render(){
         const {mode} = this.state;
-        // console.log(mode)
+        // console.log(reduxState)
         if(mode === 'register')
         return (
             <section className ='auth'>
@@ -62,6 +75,7 @@ class Auth extends Component {
                     <input placeholder='password' name='password' onChange={this.handleInput}/> 
                     <button onClick={this.handleSubmit}>Submit</button>
                 </div>
+                <div id="success">Successfully Registered!</div>
             </section>
         )
         else {
@@ -83,6 +97,7 @@ class Auth extends Component {
                     
                     <button onClick={this.handleSubmit}>Submit</button>
                 </div>
+                <div id="success">Successfully Logged In!</div>
             </section>
             )
         }
