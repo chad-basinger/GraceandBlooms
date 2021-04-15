@@ -92,6 +92,11 @@ img {
   border-radius: 90 / 99;
 }
 
+.view-item-main-img{
+  width: 70%;
+  height: 80%;
+}
+
 .size-price {
   display: flex;
   flex-direction: row;
@@ -156,3 +161,4 @@ img {
   -webkit-animation: fadein 1.0s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
+

@@ -43,7 +43,7 @@ app.delete('/api/item/:id', auth.adminsOnly, itemCtrl.deleteItem);
 //size/price endpoints
 app.post('/api/admin/addSizeAndPrice', auth.adminsOnly, adminCtrl.addSizePrice)
 
-app.get('/api/admin/getAllSizes', auth.adminsOnly, adminCtrl.getAllSizes)
+app.get('/api/admin/getAllSizes', adminCtrl.getAllSizes)
 
 app.delete('/api/admin/size/:id', auth.adminsOnly, adminCtrl.deleteSize)
 
