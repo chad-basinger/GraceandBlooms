@@ -40,7 +40,7 @@ export default(
         <Route exact path='/' component={Home}/>
         {/* <Route path="/" render={props => <Home {...props} />} /> */}
         <Route path='/addItem' component={AddItem}/>
-        <Route path='/viewItem' component={ViewItem}/>
+        <Route path='/viewItem/:id' component={ViewItem}/>
         <Route path='/editItem' component={EditItem}/>
         {/* <Route exact path='/viewCart' component={ViewCart}/> */}
         <Route exact path='/viewCart' render={(props) => (

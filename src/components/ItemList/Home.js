@@ -27,6 +27,7 @@ class Home extends Component {
         axios.get('/api/item/all')
         .then(responseItems => {
             console.log('response items', responseItems)
+            this.props.getAllItems(responseItems.data)
           this.setState({
             items: responseItems.data
             

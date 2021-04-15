@@ -31,8 +31,8 @@ module.exports = {
     readItem: async(req, res) => {
         const db = req.app.get('db')
         const {id} = req.params
-        itemListing = await db.items.get_item_by_id(id)
-        item_images = await db.items.get_item_images(id)
+        const itemListing = await db.items.get_item_by_id(id)
+        const item_images = await db.items.get_item_images(id)
 
         var itemResponse = {
             item: itemListing,
