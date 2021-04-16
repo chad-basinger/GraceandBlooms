@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Component } from 'react';
 import './auth.scss';
 import {connect} from 'react-redux'
-import {loginUser, logoutUser} from '../../dux/userReducer'
+import {loginUser} from '../../dux/userReducer'
 
 
 class Auth extends Component {

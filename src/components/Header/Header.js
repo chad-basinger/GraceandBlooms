@@ -54,7 +54,9 @@ class Header extends Component {
                         <Link to='/auth'>
                         <button>Login</button>
                         </Link>
+                        <Link to='/'>
                         <button onClick={this.handleLogout}>Logout</button>
+                        </Link>
                     </nav>
                     
                         

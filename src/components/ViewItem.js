@@ -5,6 +5,7 @@ import {getItem} from '../dux/itemReducer'
 // import {Dropdown} from 'react-bootstrap'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import {addToCart} from '../dux/cartReducer'
 
 
 class ViewItem extends Component {
@@ -13,7 +14,9 @@ class ViewItem extends Component {
         this.state = {
             loading: 'initial',
             sizeList: [],
-            currentPrice: ''
+            currentPrice: '',
+            selectedSize: 'Choose bracelet length'
+
         }
         // Although
     }
@@ -34,7 +37,10 @@ class ViewItem extends Component {
     }
 
     onSelect = (e) => {
+        // console.log('e target', e.target)
         this.setState({currentPrice: e.target.value})
+        this.setState({selectedSize: e.target.value})
+        
     }
 
     getAllSizes = () => {
@@ -44,6 +50,29 @@ class ViewItem extends Component {
             this.setState({sizeList: responseSizes.data})
         })
         .catch(err => console.log(err.response))
+    }
+
+    addToCart = () => {
+        const currentItem = {
+            id: this.props.match.params.id,
+            selectedSize: this.state.selectedSize,
+            currentPrice: this.state.currentPrice
+
+        }
+        console.log('current item', currentItem)
+        this.props.addToCart(currentItem)
+        this.showToast()
+    }
+
+    showToast() {
+        // Get the snackbar DIV
+        var x = document.getElementById("success");
+      
+        // Add the "show" class to DIV
+        x.className = "show";
+      
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
 
     // getItemById(id){
@@ -77,7 +106,7 @@ class ViewItem extends Component {
         })
     
         console.log('options', this.state.sizeList)
-        console.log(`${this.state.sizeList.size}`)
+        
         return (
             <section className='view-item-section'>
                 <h2>
@@ -86,9 +115,11 @@ class ViewItem extends Component {
                 </h2>
                 <p>{Item.item_description}</p>
                 {/* <Dropdown options={options} onChange={this._onSelect, this.onSelect} value={'Select a Size'} placeholder="Select an option" />; */}
-                <select value={this.state.sizeList} onChange={this.onSelect}>
+                <label for='sizes'>Choose a bracelet length:</label>
+                <select value={this.state.sizeList} onChange={this.onSelect} id='sizes'>
+                    <option value={this.state.selectedSize} label={this.state.selectedSize}>{this.state.selectedSize}</option>
                 {options.map((option) => (
-                  <option value={option.value}>{option.label}</option>
+                    <option value={option.value} title={option.label}>{option.label}</option>
                 ))}
               </select>
                 {/* <Dropdown id="dropdown-basic-button" title="Dropdown button">
@@ -104,7 +135,8 @@ class ViewItem extends Component {
                 </Dropdown> */}
                 
                 <img src={Item.main_img_url} className='view-item-main-img'/>
-                <button>Add to Cart</button>
+                <button onClick={() => this.addToCart()}>Add to Cart</button>
+                <div id="success">Successfully added to the cart!</div>
             </section>
         )
     }
@@ -114,4 +146,4 @@ const mapStateToProps = reduxState => {
     return reduxState;
 }
 
-export default connect(mapStateToProps, {getItem})(ViewItem);
+export default connect(mapStateToProps, {getItem, addToCart})(ViewItem);

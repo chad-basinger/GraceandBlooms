@@ -1,13 +1,22 @@
 import React from "react";
 import CartItem from './CartItem';
+import {Component} from 'react'
 import { connect } from 'react-redux';
-import { CLEAR_CART, GET_TOTALS } from '../../dux/cartReducer';
+import { clearCart, remove, getTotals } from '../../dux/cartReducer';
   
-const ViewCart = ({ cart = [], total, remove, getTotal }) => {
-  React.useEffect(() => {
-    getTotal();
-  })
-  if (cart.length === 0) {
+class ViewCart extends Component {
+  constructor(){
+    super()
+    
+  }
+
+  componentWillMount(){
+    this.props.getTotals()
+  }
+
+  render(){
+  
+  if (this.props.cart.length === 0) {
     return (
       <section className="cart">
   
@@ -28,8 +37,16 @@ const ViewCart = ({ cart = [], total, remove, getTotal }) => {
       </header>
       {/* cart items */}
       <article>
-        {cart.map((item) => {
-          return <CartItem key={item.id} {...item} />
+        
+        {this.props.cart.map((element, index) => {
+          console.log('element', element)
+          return (
+            <div key={index}>
+              <p>{element.id}</p>
+              <p>{element.selectedSize}</p>
+              <p>{element.currentPrice}</p>
+            </div>
+          )
         })}
       </article>
       {/* cart footer */}
@@ -37,29 +54,29 @@ const ViewCart = ({ cart = [], total, remove, getTotal }) => {
         <hr />
         <div className="cart-total">
           <h4>
-            total <span>${total}</span>
+            total <span>${this.props.total}</span>
           </h4>
         </div>
         <button className="btn clear-btn"
-          onClick={() => remove()} >clear cart</button>
+          onClick={() => this.props.remove()} >clear cart</button>
       </footer>
     </section>
   );
 };
+}
   
-function mapStateToProps(store) {
-  const { cart, total } = store;
-  return { cart: cart, total: total };
+const mapStateToProps = reduxState => {
+  return reduxState;
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-      remove: () => dispatch({ type: CLEAR_CART }),
-      getTotal: () => dispatch({ type: GET_TOTALS })
-    }
-  }
+// function mapDispatchToProps(dispatch) {
+//     return {
+//       remove: () => dispatch({ type: CLEAR_CART }),
+//       getTotal: () => dispatch({ type: GET_TOTALS })
+//     }
+//   }
     
-  export default connect(mapStateToProps, mapDispatchToProps)(ViewCart);
+  export default connect(mapStateToProps, {clearCart, remove, getTotals})(ViewCart);
   
       
       

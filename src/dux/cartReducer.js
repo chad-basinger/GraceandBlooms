@@ -1,12 +1,3 @@
-
-// import {
-//     INCREASE,
-//     DECREASE,
-//     REMOVE,
-//     CLEAR_CART,
-//     GET_TOTALS,
-//   } from './actions';
-
 const initialState ={
     cart: [],
     amount: 0,
@@ -18,19 +9,21 @@ export const DECREASE = 'DECREASE'
 export const REMOVE = 'REMOVE'
 export const CLEAR_CART = 'CLEAR_CART'
 export const GET_TOTALS = 'GET_TOTALS'
+export const ADD_TO_CART = 'ADD_TO_CART'
 
-export function increase(userObj){
+//handler functions
+export function increase(itemObj){
     return {
         type: INCREASE,
-        payload: userObj
+        payload: itemObj
     }
 }
 
-export function decrease(userObj){
-    console.log(userObj)
+export function decrease(itemObj){
+    console.log(itemObj)
     return {
         type: DECREASE,
-        payload: userObj
+        payload: itemObj
     }
 }
 
@@ -39,61 +32,131 @@ export function remove() {
         type: REMOVE
     }
 }
-export function clearCart(userObj) {
+export function clearCart(itemObj) {
     return {
         type: CLEAR_CART,
-        payload: userObj
+        payload: itemObj
     }
 }
 
-export function getTotals(userObj) {
+export function getTotals(itemObj) {
     return {
         type: GET_TOTALS,
-        payload: userObj
+        payload: itemObj
     }
+}
+
+export function addToCart(itemObj) {
+  return {
+      type: ADD_TO_CART,
+      payload: itemObj
+  }
 }
     
-  function reducer(state = initialState, action) {
-    if (action.type === DECREASE) {
-      return {
-        ...state, cart: state.cart.map((item) => {
-          if (item.id === action.payload.id) {
-            if (item.amount === 0) {
-              return item;
-            } else {
-              item.amount--;
+//reducer
+  export default function reducer(state = initialState, action) {
+    switch(action.type){
+      case ADD_TO_CART:
+        return {
+          ...state,
+          cart: action.payload,
+          amount: 1,
+          total: (state.total += action.payload.currentPrice)
+        }
+      case INCREASE:
+        return{
+          ...state,
+          cart: state.cart.map((item) => {
+            if (item.id === action.payload.id) {
+              item.amount++;
             }
-          }
-          return item;
-        })
-      }
+            return item;
+          })
+        }
+      case DECREASE: 
+        return {
+          ...state, 
+          cart: state.cart.map((item) => {
+            if (item.id === action.payload.id) {
+              if (item.amount === 0) {
+                return item;
+              } else {
+                item.amount--;
+              }
+            }
+            return item;
+          })
+        }
+      case CLEAR_CART:
+        return { 
+          ...state, 
+          cart: [] 
+        }
+      case REMOVE: 
+        return {
+          ...state, 
+          cart: state.cart.filter(item => item.id !== action.payload.id)
+        }
+      case GET_TOTALS:
+        // let { total, amount } = 
+        // state.cart.reduce((cartTotal, cartItem) => {
+        //   const { price, amount } = cartItem;
+        //   cartTotal.amount += amount;
+        //   cartTotal.total += Math.floor(amount * price);
+        //   return cartTotal;
+        // }, { amount: 0, total: 0 });
+        return { 
+          ...state
+        };
+      default: return state;
     }
-    if (action.type === INCREASE) {
-      return {
-        ...state, cart: state.cart.map((item) => {
-          if (item.id === action.payload.id) {
-            item.amount++;
-          }
-          return item;
-        })
-    }
   }
-  if (action.type === CLEAR_CART) {
-    return { ...state, cart: [] };
-  }
-  if (action.type === REMOVE) {
-    return {...state, cart: state.cart.filter(item => item.id !== action.payload.id)}
-  }
-  if (action.type === GET_TOTALS) {
-    let { total, amount } = state.cart.reduce((cartTotal, cartItem) => {
-      const { price, amount } = cartItem;
-      cartTotal.amount += amount;
-      cartTotal.total += Math.floor(amount * price);
-      return cartTotal;
-    }, { amount: 0, total: 0 });
-    return { ...state, total, amount };
-  }
-  return state;
-}
+
+
+
+
+
+
+  //   if (action.type === DECREASE) {
+  //     return {
+  //       ...state, cart: state.cart.map((item) => {
+  //         if (item.id === action.payload.id) {
+  //           if (item.amount === 0) {
+  //             return item;
+  //           } else {
+  //             item.amount--;
+  //           }
+  //         }
+  //         return item;
+  //       })
+  //     }
+  //   }
+  //   if (action.type === INCREASE) {
+  //     return {
+  //       ...state, cart: state.cart.map((item) => {
+  //         if (item.id === action.payload.id) {
+  //           item.amount++;
+  //         }
+  //         return item;
+  //       })
+  //   }
+  // }
+//   if (action.type === CLEAR_CART) {
+//     return { ...state, cart: [] };
+//   }
+//   if (action.type === REMOVE) {
+//     return {...state, cart: state.cart.filter(item => item.id !== action.payload.id)}
+//   }
+//   if (action.type === GET_TOTALS) {
+//     let { total, amount } = state.cart.reduce((cartTotal, cartItem) => {
+//       const { price, amount } = cartItem;
+//       cartTotal.amount += amount;
+//       cartTotal.total += Math.floor(amount * price);
+//       return cartTotal;
+//     }, { amount: 0, total: 0 });
+//     return { ...state, total, amount };
+//   }
+//   return state;
+// }
   
-export default reducer;
+// export default reducer;
