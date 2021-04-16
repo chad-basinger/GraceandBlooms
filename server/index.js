@@ -6,6 +6,7 @@ const app = express()
 const authCtrl = require('./controllers/authController')
 const itemCtrl = require('./controllers/itemController')
 const adminCtrl = require('./controllers/adminController')
+const cartCtrl = require('./controllers/cartController')
 const auth = require('./middleware/authMiddleware');
 
 
@@ -39,6 +40,15 @@ app.get('/api/item/:id', itemCtrl.readItem);
 app.put('/api/item/:id', auth.adminsOnly, itemCtrl.updateItem);
 
 app.delete('/api/item/:id', auth.adminsOnly, itemCtrl.deleteItem);
+
+//cart endpoints
+app.get('/api/cart/:user_id', cartCtrl.getUserCart)
+app.post('/api/cart/:user_id/:item_id', cartCtrl.addItemToCart)
+app.put('/api/cart/:cart_id/decrease/:item_id', cartCtrl.decreaseQuantity)
+app.put('/api/cart/:cart_id/increase/:item_id', cartCtrl.increaseQuantity)
+app.delete('/api/cart/:cart_id/delete/:item_id', cartCtrl.deleteItemFromCart)
+app.delete('/api/cart/clear/:cart_id', cartCtrl.clearEntireCart)
+
 
 //size/price endpoints
 app.post('/api/admin/addSizeAndPrice', auth.adminsOnly, adminCtrl.addSizePrice)

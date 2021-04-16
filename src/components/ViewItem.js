@@ -52,16 +52,39 @@ class ViewItem extends Component {
         .catch(err => console.log(err.response))
     }
 
-    addToCart = () => {
-        const currentItem = {
-            id: this.props.match.params.id,
-            selectedSize: this.state.selectedSize,
-            currentPrice: this.state.currentPrice
-
+    addToCart = async () => {
+        // console.log(this.props.user, 'add to cart this.props.user')
+        if(this.props.user.isLoggedIn === true){
+            //insert axios request HERE to add the item to the cart, insert into user_cart
         }
-        console.log('current item', currentItem)
-        this.props.addToCart(currentItem)
-        this.showToast()
+        //if user is NOT logged in, take them to the login page. 
+        else{
+            console.log('user is NOT logged in')
+            this.showPleaseLogin()
+            await new Promise(resolve => setTimeout(resolve, 4000));
+            this.props.history.push('/auth');
+        }
+
+        // const currentItem = {
+        //     id: this.props.match.params.id,
+        //     selectedSize: this.state.selectedSize,
+        //     currentPrice: this.state.currentPrice
+
+        // }
+        // console.log('current item', currentItem)
+        // this.props.addToCart(currentItem)
+        // this.showToast()
+    }
+
+    showPleaseLogin() {
+        // Get the snackbar DIV
+        var x = document.getElementById("login-required");
+      
+        // Add the "show" class to DIV
+        x.className = "show";
+      
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
 
     showToast() {
@@ -137,13 +160,17 @@ class ViewItem extends Component {
                 <img src={Item.main_img_url} className='view-item-main-img'/>
                 <button onClick={() => this.addToCart()}>Add to Cart</button>
                 <div id="success">Successfully added to the cart!</div>
+                <div id="login-required">Please login before completing your order.</div>
             </section>
         )
     }
 }
 
 const mapStateToProps = reduxState => {
-    return reduxState;
+    return {
+        user: reduxState.userReducer,
+        itemReducer: reduxState.itemReducer
+    };
 }
 
 export default connect(mapStateToProps, {getItem, addToCart})(ViewItem);
