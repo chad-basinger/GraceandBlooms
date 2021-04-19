@@ -1,9 +1,10 @@
 module.exports = {
     addSizePrice: async(req, res) => {
         const {size, price} = req.body
+        const {item_id} = req.params
         const db = req.app.get('db')
         try {
-            const sizes = await db.admin.add_size_price(size, price)
+            const sizes = await db.admin.add_size_price(item_id, size, price)
             res.status(200).send(sizes)
 
         }
@@ -16,8 +17,9 @@ module.exports = {
     },
     getAllSizes: async(req, res) => {
         const db = req.app.get('db')
+        const {item_id} = req.params
         try {
-            const allSizes = await db.admin.get_all_sizes()
+            const allSizes = await db.admin.get_all_sizes_for_item(item_id)
             res.status(200).send(allSizes)
         }
         catch(err) {
@@ -27,8 +29,9 @@ module.exports = {
     },
     deleteSize: async(req, res) => {
         const db = req.app.get('db')
+        const {size_id} = req.params
         try {
-            await db.admin.deleteSize(req.params.id)
+            await db.admin.deleteSize(size_id)
             .then(_ => res.sendStatus(200))
             
         }

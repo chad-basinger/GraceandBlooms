@@ -40,7 +40,7 @@ class AdminSettings extends Component {
 
         axios.post(`/api/admin/addSizeAndPrice`, {size, price})
         .then(res => {
-            this.props.addSizePrice(res.data)
+            // this.props.addSizePrice(res.data)
             this.reset()
         })
         .catch (err => console.log(err))

@@ -51,11 +51,11 @@ app.delete('/api/cart/clear/:cart_id', cartCtrl.clearEntireCart)
 
 
 //size/price endpoints
-app.post('/api/admin/addSizeAndPrice', auth.adminsOnly, adminCtrl.addSizePrice)
+app.post('/api/admin/addSizeAndPrice/:item_id', auth.adminsOnly, adminCtrl.addSizePrice)
 
-app.get('/api/admin/getAllSizes', adminCtrl.getAllSizes)
+app.get('/api/admin/getAllSizes/:item_id', adminCtrl.getAllSizes)
 
-app.delete('/api/admin/size/:id', auth.adminsOnly, adminCtrl.deleteSize)
+app.delete('/api/admin/size/:size_id', auth.adminsOnly, adminCtrl.deleteSize)
 
 
 massive({

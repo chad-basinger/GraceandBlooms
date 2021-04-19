@@ -43,6 +43,7 @@ image_url varchar(255)
 
 create table item_sizes (
 size_id serial primary key,
+item_id integer references items(item_id) NOT NULL,
 size varchar(255),
 size_price money
 )
@@ -52,10 +53,9 @@ insert into items (item_name, item_description, item_price, date_created, is_act
 VALUES ('pink bracelet', 'very pink bracelet made with beads', 12.99, '04-06-21 12:00:17', true)
 
 insert into item_sizes
-(size, size_price)
-values ('3.5cmm-5cmm', 10.99),
-('2.5cmm-3.5cmm', 9.99),
-('1cmm-2.5cmm', 7.99),
-('5cmm-7cmm', 12.99),
-('7cmm-9cmm', 13.99)
-
+(item_id, size, size_price)
+values (3, '3.5cmm-5cmm', 10.99),
+(3, '2.5cmm-3.5cmm', 9.99),
+(4, '1cmm-2.5cmm', 7.99),
+(4, '5cmm-7cmm', 12.99),
+(3, '7cmm-9cmm', 13.99)
