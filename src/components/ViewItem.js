@@ -17,6 +17,7 @@ class ViewItem extends Component {
             sizeList: [],
             currentPrice: '',
             chosenSize: 'Choose bracelet length',
+            chosenSizeID: 0,
             quantity: 1
 
         }
@@ -40,9 +41,24 @@ class ViewItem extends Component {
     }
 
     onSelect = (e) => {
-        // console.log('e target', e.target)
+        // console.log('e target', e.target.value)
+        let size = e.target.value
+        // console.log(size)
+        let item_id = this.props.match.params.id
+        axios.get(`/api/admin/getChosenSizeID/${item_id}/${size}`)
+        .then(res => {
+            console.log(res.data[0].size_id, 'this is res data')
+            this.setState({chosenSizeID: res.data[0].size_id})
+            console.log(this.state.chosenSizeID, 'CHOSEN SIZE ID')
+        })
+        .catch(err => console.log(err))
+        console.log('e target', e.target.value)
         this.setState({currentPrice: e.target.value})
-        this.setState({chosenSize: e.target.value})
+        this.setState({chosenSize: e.target.label})
+        console.log(this.state.currentPrice, 'currentPrice')
+        console.log(this.state.chosenSizeID)
+            
+        
         
     }
 
@@ -57,10 +73,11 @@ class ViewItem extends Component {
 
     addToCart = async () => {
         console.log(this.props.user, 'add to cart this.props.user')
-        const {quantity, chosenSize} = this.state
+        const {quantity, chosenSizeID} = this.state
+        console.log(chosenSizeID)
         if(this.props.user.isLoggedIn === true){
             //insert axios request HERE to add the item to the cart, insert into user_cart
-            axios.post(`/api/cart/${this.props.user.user.id}/${this.props.match.params.id}`, {quantity, chosenSize})
+            axios.post(`/api/cart/${this.props.user.user.id}/${this.props.match.params.id}`, {quantity, chosenSizeID})
             .then()
         }
         //if user is NOT logged in, take them to the login page. 
@@ -91,6 +108,31 @@ class ViewItem extends Component {
       
         // After 3 seconds, remove the show class from DIV
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+
+    decreaseQ = () => {
+        let newQ = this.state.quantity;
+        if(newQ > 1){
+            newQ--;
+            this.setState({quantity: newQ})
+        }
+        else{
+
+        }
+
+    }
+
+    increaseQ = () => {
+        // console.log(this.state.quantity, 'this.state.quantity')
+        let newQ = this.state.quantity;
+        if(newQ < 5){
+            newQ++;
+            this.setState({quantity: newQ})
+        }
+        else{
+            
+        }
+
     }
 
     goToItemView(path) {
@@ -134,7 +176,7 @@ class ViewItem extends Component {
         const options = this.state.sizeList.map(el => {
             return {
                 value: el.size_price,
-                label: `${el.size} - ${el.size_price}`
+                label: el.size
             }
         })
     
@@ -156,11 +198,17 @@ class ViewItem extends Component {
                     </h2>
                     <p>{Item.item_description}</p>
                     {/* <Dropdown options={options} onChange={this._onSelect, this.onSelect} value={'Select a Size'} placeholder="Select an option" />; */}
-                    <label for='sizes'>Choose a bracelet length:</label>
+                    <div>
+                        <p>Quantity:</p>
+                        <button onClick={() => this.decreaseQ()}>-</button>
+                        <span>{this.state.quantity}</span>
+                        <button onClick={() => this.increaseQ()}>+</button>    
+                    </div>
+                    {/* <label for='sizes'>Choose a bracelet length:</label> */}
                     <select value={this.state.sizeList} onChange={this.onSelect} id='sizes'>
                         <option value={this.state.chosenSize} label={this.state.chosenSize}>{this.state.chosenSize}</option>
                     {options.map((option) => (
-                        <option value={option.value} title={option.label}>{option.label}</option>
+                        <option onClick={this.onSelect} value={option.value} label={option.label}>{option.label}</option>
                     ))}
                 </select>
                 <img src={Item.main_img_url} className='view-item-main-img'/>

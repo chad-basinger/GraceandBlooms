@@ -3,20 +3,35 @@ import CartItem from './CartItem';
 import {Component} from 'react'
 import { connect } from 'react-redux';
 import { clearCart, remove, getTotals } from '../../dux/cartReducer';
+// import {getUserCart} from '../../dux/'
+import axios from "axios";
   
 class ViewCart extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
+    this.state = {
+      cart: []
+    }
     
   }
 
   componentWillMount(){
-    this.props.getTotals()
+    console.log(this.props, 'REDUX STATE user')
+    axios.get(`/api/cart/${this.props.user.id}`)
+    .then(res => {
+      console.log(res, 'RESPONSE TO VIEW CART')
+      this.setState({
+        cart: res.data
+      })
+    })
+    .catch(err => console.log(err))
+    // this.props.getTotals()
   }
 
   render(){
-  
-  if (this.props.cart.length === 0) {
+
+  console.log(this.state.cart)
+  if (this.state.cart.length === 0) {
     return (
       <section className="cart">
   
@@ -38,13 +53,14 @@ class ViewCart extends Component {
       {/* cart items */}
       <article>
         
-        {this.props.cart.map((element, index) => {
+        {this.state.cart.map((element, index) => {
           console.log('element', element)
           return (
             <div key={index}>
-              <p>{element.id}</p>
-              <p>{element.selectedSize}</p>
-              <p>{element.currentPrice}</p>
+              <p>{element.item_id}</p>
+              <p>{element.item_name}</p>
+              <img src={element.main_img_url}/>
+
             </div>
           )
         })}
@@ -54,11 +70,10 @@ class ViewCart extends Component {
         <hr />
         <div className="cart-total">
           <h4>
-            total <span>${this.props.total}</span>
+            {/* total <span>${this.props.total}</span> */}
           </h4>
         </div>
-        <button className="btn clear-btn"
-          onClick={() => this.props.remove()} >clear cart</button>
+        <button className="btn clear-btn">clear cart</button>
       </footer>
     </section>
   );
@@ -66,7 +81,7 @@ class ViewCart extends Component {
 }
   
 const mapStateToProps = reduxState => {
-  return reduxState;
+  return reduxState.userReducer;
 }
 
 // function mapDispatchToProps(dispatch) {
@@ -76,7 +91,7 @@ const mapStateToProps = reduxState => {
 //     }
 //   }
     
-  export default connect(mapStateToProps, {clearCart, remove, getTotals})(ViewCart);
+  export default connect(mapStateToProps)(ViewCart);
   
       
       

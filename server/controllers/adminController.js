@@ -27,6 +27,19 @@ module.exports = {
             res.sendStatus(500)
         }
     },
+
+    getChosenSizeID: async(req, res) => {
+        const db = req.app.get('db')
+        const {size, item_id} = req.params
+        try {
+            let sizeID = await db.admin.get_chosen_size(item_id, size)
+            res.status(200).send(sizeID)
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
+    },
     deleteSize: async(req, res) => {
         const db = req.app.get('db')
         const {size_id} = req.params
