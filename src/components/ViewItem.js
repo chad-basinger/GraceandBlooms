@@ -3,7 +3,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getItem} from '../dux/itemReducer'
 // import {Dropdown} from 'react-bootstrap'
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {addToCart} from '../dux/cartReducer'
 
@@ -18,7 +17,8 @@ class ViewItem extends Component {
             currentPrice: '',
             chosenSize: 'Choose bracelet length',
             chosenSizeID: 0,
-            quantity: 1
+            quantity: 1,
+            currentTotal: ''
 
         }
         // Although
@@ -33,12 +33,16 @@ class ViewItem extends Component {
         .then(res => {
             this.props.getItem(res.data)
             this.setState({loading: 'false'})
-            console.log(res.data, 'THIS IS IT')
+            // console.log(res.data, 'THIS IS IT')
             this.setState({currentPrice: res.data.item[0].item_price})
 
             
         })
     }
+
+    // componentDidUpdate = () => {
+    //     this.setState({currentTotal: this.currentPrice * this.quantity})
+    // }
 
     onSelect = (e) => {
         // console.log('e target', e.target.value)
@@ -55,6 +59,8 @@ class ViewItem extends Component {
         console.log('e target', e.target.value)
         this.setState({currentPrice: e.target.value})
         this.setState({chosenSize: e.target.label})
+        // let total = parseFloat(this.currentPrice) * parseInt(this.quantity);
+        // this.setState({currentTotal: total})
         console.log(this.state.currentPrice, 'currentPrice')
         console.log(this.state.chosenSizeID)
             
@@ -77,8 +83,17 @@ class ViewItem extends Component {
         console.log(chosenSizeID)
         if(this.props.user.isLoggedIn === true){
             //insert axios request HERE to add the item to the cart, insert into user_cart
-            axios.post(`/api/cart/${this.props.user.user.id}/${this.props.match.params.id}`, {quantity, chosenSizeID})
-            .then()
+            if(this.state.chosenSizeID != 0){
+                axios.post(`/api/cart/${this.props.user.user.id}/${this.props.match.params.id}`, {quantity, chosenSizeID})
+                .then(async _ => {
+                    this.showToast()
+                    await new Promise(resolve => setTimeout(resolve, 3000));
+                    this.props.history.push('/');
+                })
+            }
+            else{
+                this.chooseBraceletSize()
+            }
         }
         //if user is NOT logged in, take them to the login page. 
         else{
@@ -150,6 +165,17 @@ class ViewItem extends Component {
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
 
+    chooseBraceletSize() {
+        // Get the snackbar DIV
+        var x = document.getElementById("choose-size");
+      
+        // Add the "show" class to DIV
+        x.className = "show";
+      
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+
     // getItemById(id){
     //     axios.get(`/api/item/${id}`)
     //     .then(res => {
@@ -173,12 +199,15 @@ class ViewItem extends Component {
         }
         const Item = this.props.itemReducer.itemViewed.item[0]
         // the following maps the options from state and provides the value, label that dropdown is looking for.
-        const options = this.state.sizeList.map(el => {
+        const options = this.state.sizeList.map((el, index) => {
             return {
                 value: el.size_price,
-                label: el.size
+                label: el.size,
+                key: index
             }
         })
+
+        //might need to change around the mapping so that the warning is not thrown in the console.
     
         console.log('options', this.state.sizeList)
         
@@ -215,6 +244,7 @@ class ViewItem extends Component {
                 <button onClick={() => this.addToCart()}>Add to Cart</button>
                 <div id="success">Successfully added to the cart!</div>
                 <div id="login-required">Please login before completing your order.</div>
+                <div id="choose-size">Please select a bracelet size.</div>
                 </section>
             </div>
         )

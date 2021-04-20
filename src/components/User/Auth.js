@@ -14,6 +14,7 @@ class Auth extends Component {
             password: ''
         }
         // this.handleMode = this.handleMode.bind(this)
+        this.handleRegisterModeChange = this.handleRegisterModeChange.bind(this)
     }
 
     handleMode = e => {
@@ -27,18 +28,42 @@ class Auth extends Component {
         this.setState({[name]: value})
     }
 
+    handleRegisterModeChange() {
+        this.setState({
+            mode: 'sign-in'
+        })
+        console.log(this.state.mode)
+    }
+
     handleSubmit = () => {
         const {mode, email, password} = this.state;
         const path = mode === 'register' ? 'register' : 'login'
 
-        axios.post(`/api/auth/${path}`, {email, password})
-        .then(res => {
+        if(path === 'register'){
+            axios.post(`/api/auth/${path}`, {email, password})
+        .then(async res => {
+            
+            console.log(res.data)
+            // this.props.loginUser(res.data)
+            this.showToast()
+            this.handleRegisterModeChange()
+        })
+        .catch (err => console.error(err))
+        }
+        else if(path === 'login'){
+            axios.post(`/api/auth/${path}`, {email, password})
+        .then(async res => {
             
             console.log(res.data)
             this.props.loginUser(res.data)
             this.showToast()
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            this.props.history.push('/');
         })
         .catch (err => console.error(err))
+        }
+
+        
     }
 
     showToast() {
@@ -55,7 +80,7 @@ class Auth extends Component {
 
 
     render(){
-        const {mode} = this.state;
+        let {mode} = this.state;
         // console.log(reduxState)
         if(mode === 'register')
         return (

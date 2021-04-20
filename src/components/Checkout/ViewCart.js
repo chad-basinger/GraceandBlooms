@@ -28,6 +28,17 @@ class ViewCart extends Component {
     // this.props.getTotals()
   }
 
+  clearCart = () => {
+    axios.delete(`/api/cart/clear/${this.props.user.id}`)
+    .then(res => {
+      console.log(res, 'RESPONSE TO CLEAR CART')
+      this.setState({
+        cart: res.data
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
   render(){
 
   console.log(this.state.cart)
@@ -73,7 +84,7 @@ class ViewCart extends Component {
             {/* total <span>${this.props.total}</span> */}
           </h4>
         </div>
-        <button className="btn clear-btn">clear cart</button>
+        <button className="btn clear-btn" onClick={() => this.clearCart()}>clear cart</button>
       </footer>
     </section>
   );

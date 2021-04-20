@@ -47,7 +47,7 @@ app.post('/api/cart/:user_id/:item_id', cartCtrl.addItemToCart)
 app.put('/api/cart/:cart_id/decrease/:item_id', cartCtrl.decreaseQuantity)
 app.put('/api/cart/:cart_id/increase/:item_id', cartCtrl.increaseQuantity)
 app.delete('/api/cart/:cart_id/delete/:item_id', cartCtrl.deleteItemFromCart)
-app.delete('/api/cart/clear/:cart_id', cartCtrl.clearEntireCart)
+app.delete('/api/cart/clear/:user_id', cartCtrl.clearEntireCart)
 
 
 //size/price endpoints

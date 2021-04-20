@@ -40,7 +40,20 @@ module.exports ={
     deleteItemFromCart: (req, res) => {
         const db = req.app.get('db');
     },
-    clearEntireCart: (req, res) => {
+    clearEntireCart: async(req, res) => {
         const db = req.app.get('db');
+        const {user_id} = req.params;
+
+        try{
+            const clearedCart = await db.cart.clear_cart(user_id)
+
+            return res.status(200).send(clearedCart)
+
+        }
+        catch(err){
+            console.log(err)
+            return res.sendStatus(500)
+        }
+
     },
 }
