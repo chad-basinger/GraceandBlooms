@@ -44,9 +44,9 @@ module.exports = {
     updateItem: async(req, res) => {
         const db = req.app.get('db')
         const {id} = req.params
-        const {name, description, price, active} = req.body
+        const {name, description, displayPrice, is_active} = req.body
         const {date} = Date()
-        updatedItem = await db.items.update_item(id, name, description, price, date, active)
+        updatedItem = await db.items.update_item(id, name, description, displayPrice, is_active)
         //need to update item_images table
 
         res.status(200).send(updatedItem)

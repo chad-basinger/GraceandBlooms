@@ -1,5 +1,7 @@
 import {Component} from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux'
+import {getItem} from '../../dux/itemReducer'
 
 class EditItem extends Component {
     constructor(){
@@ -10,6 +12,7 @@ class EditItem extends Component {
             description: '',
             main_img_url: '',
             image_urls: [],
+            displayPrice: '',
             size: '',
             price: '',
             sizeList: [],
@@ -21,8 +24,29 @@ class EditItem extends Component {
 
     componentDidMount = () => {
         this.getAllSizes()
+        this.getItem()
+
         // console.log(this.state.items)
       }
+    
+    getItem = () => {
+        axios.get(`/api/item/${this.props.match.params.id}`)
+        .then(responseItem => {
+            console.log('response item', responseItem)
+            // this.setState({sizeList: responseSizes.data})
+        })
+        .catch(err => console.log(err.response))
+    }
+
+    updateItem = () => {
+        const {name, description, displayPrice, is_active} = this.state
+        axios.put(`/api/item/${this.props.match.params.id}`, {name, description, displayPrice, is_active})
+        .then(updatedItem => {
+            console.log('updated item', updatedItem)
+            // this.setState({sizeList: responseSizes.data})
+        })
+        .catch(err => console.log(err.response))
+    }
 
     getAllSizes = () => {
         axios.get(`/api/admin/getAllSizes/${this.props.match.params.id}`)
@@ -58,15 +82,22 @@ class EditItem extends Component {
     handleDelete(id){
         axios.delete(`/api/admin/size/${id}`)
         .then(_ => this.getAllSizes())
+        .catch (err => console.log(err))
     }
 
 
     render(){
+
+        const Item = this.props.itemReducer.itemViewed.item[0]
         return(
             <div>
                 <p>
                     Name of Item: 
                     <input name='name' onChange={this.handleInput} id='itemName' placeholder='item name'/>
+                </p>
+                <p>
+                    Display Price: 
+                    <input name='displayPrice' onChange={this.handleInput} id='displayPrice' placeholder='price displayed on listing'/>
                 </p>
                 <p>
                     Item Description: 
@@ -93,9 +124,18 @@ class EditItem extends Component {
                         )
                     })}
                 </div>
+                <img src={Item.main_img_url} className='edit-item-main-img'/>
+                <button>Update Item</button>
             </div>
         )
     }
 }
 
-export default EditItem;
+const mapStateToProps = reduxState => {
+    return {
+        user: reduxState.userReducer,
+        itemReducer: reduxState.itemReducer
+    };
+}
+
+export default connect(mapStateToProps, {getItem})(EditItem);

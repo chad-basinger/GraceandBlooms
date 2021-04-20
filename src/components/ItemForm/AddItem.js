@@ -40,12 +40,6 @@ class AddItem extends Component {
         this.setState({[name]: value})
     }
 
-    handleImageAdd = e => {
-        const {name, value} = e.target;
-
-        this.setState({[name]: value})
-    }
-
     // handleSubmitAdd = () => {
     //     const {size, price, index} = this.state;
     //     var newsizeList = this.state.sizeList.push(
@@ -115,7 +109,7 @@ class AddItem extends Component {
                     })}
                 </div> */}
                 <div>
-                    <UploadImage/>
+                    <button>Create Item Listing</button>
                 </div>
 
             </div>

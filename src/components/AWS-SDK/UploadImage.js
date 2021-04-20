@@ -1,6 +1,7 @@
 import React , {useState} from 'react';
 import { uploadFile } from 'react-s3';
 import {S3_BUCKET, REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY} from './s3env'
+import axios from 'axios'
 
 
 
@@ -24,7 +25,8 @@ const UploadImage = () => {
             .then(data => {
                 showToast()
                 console.log(data)
-                
+                //put axios call here using the response to insert url into items table
+                axios.post()
             })
             .catch(err => console.error(err))
     }
