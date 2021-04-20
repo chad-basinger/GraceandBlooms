@@ -56,8 +56,8 @@ export default function CheckoutNew (props) {
                 <StripeCheckout 
                 stripeKey='pk_test_51Ifs8VCJOqgNi9m25KvT5fbS1MPYnWPMYsBExoeRjMqOYGnF25vgy4kPnZwXmVZMBg5KD2dMLNEdexZ09nqNXKhZ00JgFQ8IST'
                 token={handleToken}
-                billingAddress=""
-                shippingAddress=""
+                billingAddress
+                shippingAddress
                 amount={product.price * 100}
                 name={product.name}
     
