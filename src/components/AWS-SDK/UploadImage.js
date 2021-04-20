@@ -21,15 +21,33 @@ const UploadImage = () => {
 
     const handleUpload = async (file) => {
         uploadFile(file, config)
-            .then(data => console.log(data))
+            .then(data => {
+                showToast()
+                console.log(data)
+                
+            })
             .catch(err => console.error(err))
     }
 
-    return <div>
+    const showToast = () => {
+        // Get the snackbar DIV
+        var x = document.getElementById("added-image");
+      
+        // Add the "show" class to DIV
+        x.className = "show";
+      
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+
+    return (
+    <div>
         <div>Select file</div>
         <input type="file" onChange={handleFileInput}/>
         <button onClick={() => handleUpload(selectedFile)}>Upload Image</button>
+        <div id="added-image">Successfully added the image. Feel free to select/upload another.</div>
     </div>
+    )
 }
 
 export default UploadImage;

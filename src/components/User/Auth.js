@@ -9,7 +9,7 @@ class Auth extends Component {
     constructor(){
         super()
         this.state ={
-            mode: 'register',
+            mode: 'sign-in',
             email: '',
             password: ''
         }

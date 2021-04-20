@@ -6,9 +6,14 @@ class EditItem extends Component {
         super()
 
         this.state = {
+            name: '',
+            description: '',
+            main_img_url: '',
+            image_urls: [],
             size: '',
             price: '',
-            sizeList: []
+            sizeList: [],
+            is_active: true
         }
 
         this.reset = this.reset.bind(this)
@@ -59,6 +64,14 @@ class EditItem extends Component {
     render(){
         return(
             <div>
+                <p>
+                    Name of Item: 
+                    <input name='name' onChange={this.handleInput} id='itemName' placeholder='item name'/>
+                </p>
+                <p>
+                    Item Description: 
+                    <input name='description' onChange={this.handleInput} id='item-description' placeholder='item description'/>
+                </p>
                 <div>
                     <input value={this.state.size} name='size' placeholder='add-size' onChange={this.handleInput}/>
                     <input value={this.state.price} name='price' placeholder='add-price' onChange={this.handleInput}/>

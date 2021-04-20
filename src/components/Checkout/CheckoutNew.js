@@ -1,9 +1,7 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { render } from "@testing-library/react";
 // require('dotenv').config()
 // import Stripe from "stripe";
 
