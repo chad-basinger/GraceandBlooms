@@ -1,0 +1,34 @@
+Date : 2021-04-19 21:58:35
+Directory : /Users/chadbasinger/devmountain/unit-7/graceandblooms/server
+Total : 8 files,  309 codes, 14 comments, 68 blanks, all 391 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |          8 |        309 |         14 |         68 |        391 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                         | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                            |          8 |        309 |         14 |         68 |        391 |
+| controllers                                                                                  |          5 |        216 |         10 |         43 |        269 |
+| middleware                                                                                   |          1 |         14 |          0 |          0 |         14 |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                     | language   | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/chadbasinger/devmountain/unit-7/graceandblooms/server/controllers/adminController.js  | JavaScript |         51 |          0 |          5 |         56 |
+| /Users/chadbasinger/devmountain/unit-7/graceandblooms/server/controllers/authController.js   | JavaScript |         65 |          3 |         14 |         82 |
+| /Users/chadbasinger/devmountain/unit-7/graceandblooms/server/controllers/cartController.js   | JavaScript |         48 |          0 |         11 |         59 |
+| /Users/chadbasinger/devmountain/unit-7/graceandblooms/server/controllers/filterController.js | JavaScript |          0 |          0 |          1 |          1 |
+| /Users/chadbasinger/devmountain/unit-7/graceandblooms/server/controllers/itemController.js   | JavaScript |         52 |          7 |         12 |         71 |
+| /Users/chadbasinger/devmountain/unit-7/graceandblooms/server/index.js                        | JavaScript |         51 |          4 |         21 |         76 |
+| /Users/chadbasinger/devmountain/unit-7/graceandblooms/server/middleware/authMiddleware.js    | JavaScript |         14 |          0 |          0 |         14 |
+| /Users/chadbasinger/devmountain/unit-7/graceandblooms/server/stripeSample.js                 | JavaScript |         28 |          0 |          4 |         32 |
+| Total                                                                                        |            |        309 |         14 |         68 |        391 |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

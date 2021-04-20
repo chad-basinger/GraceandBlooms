@@ -5,11 +5,13 @@
 /.pnp
 .pnp.js
 .env
-/src/components/AWS-SDK/s3env.js
-/src/components/AWS-SDK/bucketPolicy.txt
+
 
 # testing
 /coverage
+/src/components/AWS-SDK/s3env.js
+/src/components/AWS-SDK/bucketPolicy.txt
+/src/components/Checkout/nodeStripeFinalCheckout.js
 
 # production
 /build

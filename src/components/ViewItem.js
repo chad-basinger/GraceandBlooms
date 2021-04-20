@@ -83,12 +83,12 @@ class ViewItem extends Component {
         console.log(chosenSizeID)
         if(this.props.user.isLoggedIn === true){
             //insert axios request HERE to add the item to the cart, insert into user_cart
-            if(this.state.chosenSizeID != 0){
+            if(this.state.chosenSizeID !== 0){
                 axios.post(`/api/cart/${this.props.user.user.id}/${this.props.match.params.id}`, {quantity, chosenSizeID})
                 .then(async _ => {
                     this.showToast()
-                    await new Promise(resolve => setTimeout(resolve, 3000));
-                    this.props.history.push('/');
+                    // await new Promise(resolve => setTimeout(resolve, 3000));
+                    // this.props.history.push('/');
                 })
             }
             else{

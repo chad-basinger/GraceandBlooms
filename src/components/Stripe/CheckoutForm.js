@@ -3,6 +3,10 @@ import CardSection from './CardSection'
 import { ElementsConsumer, CardElement } from "@stripe/react-stripe-js";
 
 class CheckoutForm extends Component {
+  constructor(props){
+    super(props)
+    
+  }
   handleSubmit = async event => {
     event.preventDefault();
 

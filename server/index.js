@@ -43,6 +43,7 @@ app.delete('/api/item/:id', auth.adminsOnly, itemCtrl.deleteItem);
 
 //cart endpoints
 app.get('/api/cart/:user_id', cartCtrl.getUserCart)
+app.get
 app.post('/api/cart/:user_id/:item_id', cartCtrl.addItemToCart)
 app.put('/api/cart/:cart_id/decrease/:item_id', cartCtrl.decreaseQuantity)
 app.put('/api/cart/:cart_id/increase/:item_id', cartCtrl.increaseQuantity)

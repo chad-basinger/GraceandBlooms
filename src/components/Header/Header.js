@@ -7,10 +7,7 @@ import axios from 'axios'
 // import session from 'express-session'
 
 class Header extends Component {
-    constructor(props){
-        super(props)
-        
-    }
+    
     
     // componentDidMount = () => {
     //     this.props.getSession()

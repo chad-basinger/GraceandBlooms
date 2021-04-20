@@ -7,6 +7,7 @@ import ViewCart from './components/Checkout/ViewCart'
 import Auth from './components/User/Auth'
 import AdminSettings from './components/ItemForm/AdminSettings'
 import CheckoutComponent from './components/Checkout/CheckoutComponent'
+import CheckoutNew from './components/Checkout/CheckoutNew'
 
 // const cartItems = [
 //     {
@@ -48,6 +49,6 @@ export default(
             )}/> */}
         <Route path='/auth' component={Auth}/>
         <Route path='/admin/settings' component={AdminSettings}/>
-        <Route path='/viewCart/checkout' component={CheckoutComponent}/>
+        <Route path='/viewCart/checkout' component={CheckoutNew}/>
     </Switch>
 )
