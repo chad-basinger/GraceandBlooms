@@ -212,18 +212,17 @@ class ViewItem extends Component {
 
         //might need to change around the mapping so that the warning is not thrown in the console.
     
-        console.log('options', this.state.sizeList)
+        console.log('props user', this.props.user)
         
+        if(this.props.user.user.is_admin === true)
         return (
-            <div>
-                <div
-                    onClick={
-                                () => this.goToItemView(`/editItem/${this.props.match.params.id}`)
-                                // () => window.open(element.main_img_url)
-                                }>
-                    <button>Edit Item</button>
-                </div>
                 <section className='view-item-section'>
+                    <div
+                        onClick={
+                                    () => this.goToItemView(`/editItem/${this.props.match.params.id}`)
+                                    }>
+                        <button>Edit Item</button>
+                    </div>
                     <h2>
                         {Item.item_name}
                         {this.state.currentPrice}
@@ -256,8 +255,51 @@ class ViewItem extends Component {
                     <div id="login-required">Please login before completing your order.</div>
                     <div id="choose-size">Please select a bracelet size.</div>
                 </section>
-            </div>
         )
+        else{
+            return (
+                <div className='view-item-section'>
+                    {/* <div
+                        onClick={
+                                    () => this.goToItemView(`/editItem/${this.props.match.params.id}`)
+                                    }>
+                        <button>Edit Item</button>
+                    </div> */}
+                    <section>
+                        <h2>
+                            {Item.item_name}
+                            {this.state.currentPrice}
+                        </h2>
+                        <p>{Item.item_description}</p>
+                        <div>
+                            <p>Quantity:</p>
+                            <button onClick={() => this.decreaseQ()}>-</button>
+                            <span>{this.state.quantity}</span>
+                            <button onClick={() => this.increaseQ()}>+</button>    
+                        </div>
+                        {/* <label for='sizes'>Choose a bracelet length:</label> */}
+                        <select value={this.state.sizeList} onChange={this.onSelect} id='sizes'>
+                            <option value={this.state.chosenSize} label={this.state.chosenSize}>{this.state.chosenSize}</option>
+                        {options.map((option) => (
+                            <option onClick={this.onSelect} value={option.value} label={option.label}>{option.label}</option>
+                        ))}
+                        </select>
+                        <img src={Item.main_img_url} className='view-item-main-img'/>
+                        {this.state.miniImages.map((el, index) => {
+                            // console.log(el, 'el from maps')
+                            return (
+                                <img className='mini-pic' src={el.image_url} key={index} alt={el.image_url}/>
+                                
+                            )
+                        })}
+                        <button onClick={() => this.addToCart()}>Add to Cart</button>
+                        <div id="success">Successfully added to the cart!</div>
+                        <div id="login-required">Please login before completing your order.</div>
+                        <div id="choose-size">Please select a bracelet size.</div>
+                    </section>
+                </div>
+            )
+        }
     }
 }
 

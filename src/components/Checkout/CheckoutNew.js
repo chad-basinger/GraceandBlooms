@@ -24,7 +24,7 @@ export default function CheckoutNew (props) {
     var [product] = React.useState({
         name: props.name,
         price: props.total,
-        description: "Cool car"
+        description: props.name
       });
 
       async function handleToken (token, addresses) {

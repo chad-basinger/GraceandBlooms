@@ -59,15 +59,13 @@ class Home extends Component {
         // )
 
         return (
-            <div>
+            <div className='home-section'>
                 
                 <div className='tool-bar-for-item-list'>
                     Search Input here, Filter By:
                 </div>
                 
                 <div className="items">
-                    {/* {console.log('props itemList.data', this.props.itemList.data)} */}
-                    {/* {itemListings} */}
                     
                     {this.state.items.map((element, index) => {
                         return (
@@ -83,9 +81,6 @@ class Home extends Component {
                         </div>
                     )}) 
                     }
-                </div>
-                <div className='star-five'>
-
                 </div>
 
             </div>

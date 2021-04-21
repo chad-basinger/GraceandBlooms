@@ -38,7 +38,7 @@ class Header extends Component {
                                 
                                 <nav className='nav-menu'>
                                     <Link to='/'>
-                                    <button>Home</button>
+                                    <button>Bracelets</button>
                                     </Link>
                                     <Link to='/viewCart'>
                                     <button>View Cart</button>
