@@ -12,7 +12,7 @@ const config = {
     secretAccessKey: AWS_SECRET_ACCESS_KEY,
 }
 
-const UploadImage = () => {
+const UploadImage = (props) => {
 
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -26,7 +26,7 @@ const UploadImage = () => {
                 showToast()
                 console.log(data)
                 //put axios call here using the response to insert url into items table
-                axios.post()
+                props.onAddImage(data.location)
             })
             .catch(err => console.error(err))
     }

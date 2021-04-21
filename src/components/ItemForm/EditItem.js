@@ -1,11 +1,12 @@
-import {Component} from 'react'
+import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {getItem} from '../../dux/itemReducer'
+import UploadImage from '../AWS-SDK/UploadImage'
 
 class EditItem extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         this.state = {
             name: '',
@@ -33,7 +34,11 @@ class EditItem extends Component {
         axios.get(`/api/item/${this.props.match.params.id}`)
         .then(responseItem => {
             console.log('response item', responseItem)
-            // this.setState({sizeList: responseSizes.data})
+            this.setState({name: responseItem.data.item[0].item_name})
+            this.setState({description: responseItem.data.item[0].item_description})
+            this.setState({displayPrice: responseItem.data.item[0].item_price})
+            this.setState({main_img_url: responseItem.data.item[0].main_img_url})
+            this.setState({is_active: responseItem.data.item[0].is_active})
         })
         .catch(err => console.log(err.response))
     }
@@ -85,27 +90,34 @@ class EditItem extends Component {
         .catch (err => console.log(err))
     }
 
+    onAddImage = (img) => {
+        var newImgList = [...this.state.image_urls]
+        newImgList.push(`${img}`)
+        this.setState({image_urls: newImgList})
+        console.log(this.state.image_urls)
+    }
+
 
     render(){
 
         const Item = this.props.itemReducer.itemViewed.item[0]
         return(
-            <div>
+            <div className='edit-item-section'>
                 <p>
                     Name of Item: 
-                    <input name='name' onChange={this.handleInput} id='itemName' placeholder='item name'/>
+                    <input className='input-long' name='name' onChange={this.handleInput} id='itemName' placeholder='item name'/>
                 </p>
                 <p>
-                    Display Price: 
-                    <input name='displayPrice' onChange={this.handleInput} id='displayPrice' placeholder='price displayed on listing'/>
+                    Listing Price: 
+                    <input className='input-short' name='displayPrice' onChange={this.handleInput} id='displayPrice' placeholder='listing price'/>
                 </p>
                 <p>
                     Item Description: 
-                    <input name='description' onChange={this.handleInput} id='item-description' placeholder='item description'/>
+                    <input className='input-long' name='description' onChange={this.handleInput} id='item-description' placeholder='item description'/>
                 </p>
                 <div>
-                    <input value={this.state.size} name='size' placeholder='add-size' onChange={this.handleInput}/>
-                    <input value={this.state.price} name='price' placeholder='add-price' onChange={this.handleInput}/>
+                    <input value={this.state.size} className='input-long' name='size' placeholder='add-size' onChange={this.handleInput}/>
+                    <input value={this.state.price} className='input-short' name='price' placeholder='add-price' onChange={this.handleInput}/>
                     <button onClick={this.handleSubmit}>Add New Size/Price</button>
                 </div>
                 <div>
@@ -124,8 +136,20 @@ class EditItem extends Component {
                         )
                     })}
                 </div>
-                <img src={Item.main_img_url} className='edit-item-main-img'/>
-                <button>Update Item</button>
+                <div className='main-img-div-edit-item'>
+                    <p>Main Image on Listing</p>
+                    <img src={Item.main_img_url} className='edit-item-main-img'/>
+                    {this.state.image_urls.map((el, index) => {
+                        // console.log(el, 'el from maps')
+                        return (
+                            <img className='mini-pic' src={el} key={index} alt={el.data}/>
+                            
+                        )
+                    })}
+                    <UploadImage onAddImage={this.onAddImage}/>
+                </div>
+
+                <button className='submit-button'>Update Item</button>
             </div>
         )
     }

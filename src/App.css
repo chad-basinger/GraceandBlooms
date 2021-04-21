@@ -257,3 +257,46 @@ img {
   -webkit-animation: fadein 1.0s, fadeout 0.5s 4s;
   animation: fadein 0.5s, fadeout 0.5s 4s;
 }
+
+.edit-item-section{
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  align-items: left;
+}
+
+.edit-item-main-img{
+  width: 400px;
+  height: 300px;
+}
+
+.mini-pic{
+  width: 200px;
+  height: 125px;
+}
+
+.main-img-div-edit-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-long{
+  width: 200px;
+  height: 15px;
+}
+
+.input-short{
+  width: 100px;
+  height: 15px;
+}
+
+.submit-button{
+  padding: 10px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: rgb(235, 210, 142);
+  border: 2px solid #318d14;
+  
+}
