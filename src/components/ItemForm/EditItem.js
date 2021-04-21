@@ -3,10 +3,12 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {getItem} from '../../dux/itemReducer'
 import UploadImage from '../AWS-SDK/UploadImage'
+import { useHistory } from "react-router-dom";
 
 class EditItem extends Component {
     constructor(props){
         super(props)
+        // let history = useHistory();
 
         this.state = {
             name: '',
@@ -22,6 +24,7 @@ class EditItem extends Component {
 
         this.reset = this.reset.bind(this)
     }
+    
 
     componentDidMount = () => {
         this.getAllSizes()
@@ -109,7 +112,8 @@ class EditItem extends Component {
         axios.post(`/api/item/addImages/${this.props.match.params.id}`, {image_urls})
         .then(updatedItemImages => {
             console.log('updated item IMAGES', updatedItemImages)
-            
+            this.props.history.goBack()
+
         })
         .catch (err => console.log(err))
     }
@@ -130,7 +134,7 @@ class EditItem extends Component {
                 </p>
                 <p>
                     Item Description: 
-                    <input className='input-long' name='description' defaultValue={Item.item_description} onChange={this.handleInput} id='item-description' placeholder='item description'/>
+                    <input className='input-description' name='description' defaultValue={Item.item_description} onChange={this.handleInput} id='item-description' placeholder='item description'/>
                 </p>
                 <div>
                     <input value={this.state.size} className='input-long' name='size' placeholder='add-size' onChange={this.handleInput}/>

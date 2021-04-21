@@ -32,7 +32,7 @@ class Auth extends Component {
         this.setState({
             mode: 'sign-in'
         })
-        console.log(this.state.mode)
+        // console.log(this.state.mode)
     }
 
     handleSubmit = () => {
@@ -43,9 +43,9 @@ class Auth extends Component {
             axios.post(`/api/auth/${path}`, {email, password})
         .then(async res => {
             
-            console.log(res.data)
+            // console.log(res.data)
             // this.props.loginUser(res.data)
-            this.showToast()
+            this.showToastRegister()
             this.handleRegisterModeChange()
         })
         .catch (err => console.error(err))
@@ -54,10 +54,10 @@ class Auth extends Component {
             axios.post(`/api/auth/${path}`, {email, password})
         .then(async res => {
             
-            console.log(res.data)
+            console.log(res.data, 'LOGIN POST RAN')
             this.props.loginUser(res.data)
-            this.showToast()
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            // this.showToastLogin()
+            await new Promise(resolve => setTimeout(resolve, 1000));
             this.props.history.push('/');
         })
         .catch (err => console.error(err))
@@ -65,10 +65,9 @@ class Auth extends Component {
 
         
     }
-
-    showToast() {
+    showToastRegister() {
         // Get the snackbar DIV
-        var x = document.getElementById("success");
+        var x = document.getElementById("register-toast");
       
         // Add the "show" class to DIV
         x.className = "show";
@@ -100,7 +99,7 @@ class Auth extends Component {
                     <input placeholder='password' name='password' onChange={this.handleInput}/> 
                     <button onClick={this.handleSubmit}>Submit</button>
                 </div>
-                <div id="success">Successfully Registered!</div>
+                <div id="register-toast">Successfully Registered!</div>
             </section>
         )
         else {
@@ -122,7 +121,7 @@ class Auth extends Component {
                     
                     <button onClick={this.handleSubmit}>Submit</button>
                 </div>
-                <div id="success">Successfully Logged In!</div>
+                <div id="register-toast">Successfully Registered!</div>
             </section>
             )
         }
