@@ -42,14 +42,22 @@ module.exports = {
         res.status(200).send(itemResponse)
     },
     updateItem: async(req, res) => {
-        const db = req.app.get('db')
-        const {id} = req.params
-        const {name, description, displayPrice, is_active} = req.body
-        const {date} = Date()
-        updatedItem = await db.items.update_item(id, name, description, displayPrice, is_active)
-        //need to update item_images table
 
+        try{
+
+            const db = req.app.get('db')
+            const {id} = req.params
+            const {name, description, displayPrice, is_active, image_urls} = req.body
+            const updatedItem = await db.items.update_item(id, name, description, displayPrice, is_active)
+          
         res.status(200).send(updatedItem)
+        }
+        catch(err) { 
+            console.log(err)
+            res.sendStatus(500)
+        }
+
+        // res.status(200).send(updatedItem, updatedItemImages)
     },
     deleteItem: async(req, res) => {
         const db = req.app.get('db')
@@ -66,6 +74,36 @@ module.exports = {
             res.sendStatus(500)
         }
         
+    },
+    addImagesToItem: async(req, res) => {
+        try{
+            const db = req.app.get('db')
+            const {id} = req.params;
+            const {image_urls} = req.body;
+            console.log(image_urls, 'IMAGE_URLS')
+            if(image_urls.length > 1){
+                var updatedItemImages = [];
+                for(let i = 0; i < image_urls.length; i++){
+                    const el_img_url = image.urls[i]
+                    const addedOneItem = await db.items.add_images(id, el_img_url)
+                    updatedItemImages.push(addedOneItem)
+                    console.log('added one Item', addedOneItem)
+                }
+                console.log('updated item images', updatedItemImages)
+                
+                res.status(200).send(updatedItemImages)
+            }
+            else {
+            const updatedItemImages = await db.items.add_images(id, image_urls[0])
+            console.log('updated item images', updatedItemImages)
+            res.status(200).send(updatedItemImages)
+
+            }
+        }
+        catch(err) { 
+            console.log(err)
+            res.sendStatus(500)
+        }
     }
 
 }

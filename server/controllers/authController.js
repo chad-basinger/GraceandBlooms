@@ -58,7 +58,7 @@ module.exports = {
         if (!isAuthenticated) {
             return res.status(403).send('Incorrect password');
           }
-          
+        // req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000;
         req.session.user = {
             id: user.user_id,
             email: user.email,

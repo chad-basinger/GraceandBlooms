@@ -35,6 +35,8 @@ app.get('/api/item/all', itemCtrl.getAllItems);
 
 app.post('/api/item/add', auth.adminsOnly, itemCtrl.createItem);
 
+app.post('/api/item/addImages/:id', auth.adminsOnly, itemCtrl.addImagesToItem);
+
 app.get('/api/item/:id', itemCtrl.readItem);
 
 app.put('/api/item/:id', auth.adminsOnly, itemCtrl.updateItem);

@@ -94,7 +94,8 @@ class Home extends Component {
 }
 
 const mapStateToProps = reduxState => {
-    return reduxState.itemReducer
+    return reduxState.itemReducer,
+    reduxState.userReducer
 }
 
 export default connect(mapStateToProps, {getAllItems})(Home);

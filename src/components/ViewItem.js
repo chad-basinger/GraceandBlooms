@@ -18,7 +18,8 @@ class ViewItem extends Component {
             chosenSize: 'Choose bracelet length',
             chosenSizeID: 0,
             quantity: 1,
-            currentTotal: ''
+            currentTotal: '',
+            miniImages: []
 
         }
         // Although
@@ -33,8 +34,10 @@ class ViewItem extends Component {
         .then(res => {
             this.props.getItem(res.data)
             this.setState({loading: 'false'})
-            // console.log(res.data, 'THIS IS IT')
+            console.log(res.data, 'THIS IS IT')
             this.setState({currentPrice: res.data.item[0].item_price})
+            this.setState({miniImages: res.data.images})
+            console.log(this.state.miniImages, 'images FOR ME')
 
             
         })
@@ -239,12 +242,19 @@ class ViewItem extends Component {
                     {options.map((option) => (
                         <option onClick={this.onSelect} value={option.value} label={option.label}>{option.label}</option>
                     ))}
-                </select>
-                <img src={Item.main_img_url} className='view-item-main-img'/>
-                <button onClick={() => this.addToCart()}>Add to Cart</button>
-                <div id="success">Successfully added to the cart!</div>
-                <div id="login-required">Please login before completing your order.</div>
-                <div id="choose-size">Please select a bracelet size.</div>
+                    </select>
+                    <img src={Item.main_img_url} className='view-item-main-img'/>
+                    {this.state.miniImages.map((el, index) => {
+                        // console.log(el, 'el from maps')
+                        return (
+                            <img className='mini-pic' src={el.image_url} key={index} alt={el.image_url}/>
+                            
+                        )
+                    })}
+                    <button onClick={() => this.addToCart()}>Add to Cart</button>
+                    <div id="success">Successfully added to the cart!</div>
+                    <div id="login-required">Please login before completing your order.</div>
+                    <div id="choose-size">Please select a bracelet size.</div>
                 </section>
             </div>
         )

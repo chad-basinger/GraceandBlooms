@@ -43,15 +43,15 @@ class EditItem extends Component {
         .catch(err => console.log(err.response))
     }
 
-    updateItem = () => {
-        const {name, description, displayPrice, is_active} = this.state
-        axios.put(`/api/item/${this.props.match.params.id}`, {name, description, displayPrice, is_active})
-        .then(updatedItem => {
-            console.log('updated item', updatedItem)
-            // this.setState({sizeList: responseSizes.data})
-        })
-        .catch(err => console.log(err.response))
-    }
+    // updateItem = () => {
+    //     const {name, description, displayPrice, is_active} = this.state
+    //     axios.put(`/api/item/${this.props.match.params.id}`, {name, description, displayPrice, is_active})
+    //     .then(updatedItem => {
+    //         console.log('updated item', updatedItem)
+    //         // this.setState({sizeList: responseSizes.data})
+    //     })
+    //     .catch(err => console.log(err.response))
+    // }
 
     getAllSizes = () => {
         axios.get(`/api/admin/getAllSizes/${this.props.match.params.id}`)
@@ -67,7 +67,7 @@ class EditItem extends Component {
         this.setState({[name]: value})
     }
 
-    handleSubmit = () => {
+    handleSubmitSize = () => {
         const {size, price} = this.state;
 
         axios.post(`/api/admin/addSizeAndPrice/${this.props.match.params.id}`, {size, price})
@@ -97,6 +97,23 @@ class EditItem extends Component {
         console.log(this.state.image_urls)
     }
 
+    handleUpdateItem = () => {
+        const {name, description, main_img_url, image_urls, displayPrice, is_active} = this.state;
+        //axios put items table using id and this.state
+        axios.put(`/api/item/${this.props.match.params.id}`, {name, description, main_img_url, displayPrice, is_active, image_urls})
+        .then(updatedItem => {
+            console.log('updated item', updatedItem)
+        })
+        .catch (err => console.log(err))
+        //axios insert into item_images using item_id, image_url
+        axios.post(`/api/item/addImages/${this.props.match.params.id}`, {image_urls})
+        .then(updatedItemImages => {
+            console.log('updated item IMAGES', updatedItemImages)
+            
+        })
+        .catch (err => console.log(err))
+    }
+
 
     render(){
 
@@ -105,20 +122,20 @@ class EditItem extends Component {
             <div className='edit-item-section'>
                 <p>
                     Name of Item: 
-                    <input className='input-long' name='name' onChange={this.handleInput} id='itemName' placeholder='item name'/>
+                    <input className='input-long' name='name' defaultValue={Item.item_name} onChange={this.handleInput} id='itemName' placeholder='item name'/>
                 </p>
                 <p>
                     Listing Price: 
-                    <input className='input-short' name='displayPrice' onChange={this.handleInput} id='displayPrice' placeholder='listing price'/>
+                    <input className='input-short' name='displayPrice' defaultValue={Item.item_price} onChange={this.handleInput} id='displayPrice' placeholder='listing price'/>
                 </p>
                 <p>
                     Item Description: 
-                    <input className='input-long' name='description' onChange={this.handleInput} id='item-description' placeholder='item description'/>
+                    <input className='input-long' name='description' defaultValue={Item.item_description} onChange={this.handleInput} id='item-description' placeholder='item description'/>
                 </p>
                 <div>
                     <input value={this.state.size} className='input-long' name='size' placeholder='add-size' onChange={this.handleInput}/>
                     <input value={this.state.price} className='input-short' name='price' placeholder='add-price' onChange={this.handleInput}/>
-                    <button onClick={this.handleSubmit}>Add New Size/Price</button>
+                    <button onClick={this.handleSubmitSize}>Add New Size/Price</button>
                 </div>
                 <div>
                     {this.state.sizeList.map((el, index) => {
@@ -149,7 +166,7 @@ class EditItem extends Component {
                     <UploadImage onAddImage={this.onAddImage}/>
                 </div>
 
-                <button className='submit-button'>Update Item</button>
+                <button className='submit-button' onClick={this.handleUpdateItem}>Update Item</button>
             </div>
         )
     }

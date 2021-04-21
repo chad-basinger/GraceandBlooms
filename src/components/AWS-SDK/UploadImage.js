@@ -46,7 +46,7 @@ const UploadImage = (props) => {
     <div>
         <div>Select file</div>
         <input type="file" onChange={handleFileInput}/>
-        <button onClick={() => handleUpload(selectedFile)}>Upload Image</button>
+        <button onClick={() => handleUpload(selectedFile)}>Add Image</button>
         <div id="added-image">Successfully added the image. Feel free to select/upload another.</div>
     </div>
     )
