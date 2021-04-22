@@ -83,7 +83,7 @@ class Auth extends Component {
         // console.log(reduxState)
         if(mode === 'register')
         return (
-            <section className ='auth'>
+            <section className='auth'>
                 <div className='auth-choice'>
                     <button name='register' onClick={this.handleMode} disabled={mode === 'register'}>
                         Register
@@ -94,17 +94,17 @@ class Auth extends Component {
                 </div>
                 <h1>{mode.toUpperCase()}</h1>
 
-                <div>
+                <div className='input-auth'>
                     <input placeholder='email' name='email' onChange={this.handleInput}/>
                     <input placeholder='password' name='password' onChange={this.handleInput}/> 
-                    <button onClick={this.handleSubmit}>Submit</button>
+                    <button className='submit-button' onClick={this.handleSubmit}>Submit</button>
                 </div>
                 <div id="register-toast">Successfully Registered!</div>
             </section>
         )
         else {
             return (
-                <section className ='auth'>
+                <section className='auth'>
                 <div className='auth-choice'>
                     <button name='register' onClick={this.handleMode} disabled={mode === 'register'}>
                         Register
@@ -115,11 +115,11 @@ class Auth extends Component {
                 </div>
                 <h1>{mode.toUpperCase()}</h1>
 
-                <div>
+                <div className='input-auth'>
                     <input placeholder='email' name='email' onChange={this.handleInput}/>
                     <input placeholder='password' name='password' onChange={this.handleInput}/>
                     
-                    <button onClick={this.handleSubmit}>Submit</button>
+                    <button className='submit-button' onClick={this.handleSubmit}>Submit</button>
                 </div>
                 <div id="register-toast">Successfully Registered!</div>
             </section>
