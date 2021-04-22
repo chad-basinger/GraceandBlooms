@@ -3,7 +3,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {getItem} from '../../dux/itemReducer'
 import UploadImage from '../AWS-SDK/UploadImage'
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 class EditItem extends Component {
     constructor(props){

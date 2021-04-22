@@ -25,11 +25,16 @@
   width: 100%;
   height: 100vh;
   background: rgb(229, 182, 233);
+  background-position: fill;
   display: flex;
   flex-direction: column;
   align-items: center;
   
   /* border-right: 1px solid black; */
+}
+
+section{
+  background: rgb(229, 182, 233);
 }
 
 .header {
@@ -358,7 +363,7 @@ img {
   }
 
   .introduction{
-    
+
     font-family:'Lucida Sans';
   }
 
@@ -408,8 +413,21 @@ img {
   .view-item-section{
     padding-top: 20vh;
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     padding-left: 10px;
+    background: rgb(229, 182, 233)
+    
+  }
+
+  .view-item-section img{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+
+  section{
+    background: rgb(229, 182, 233);
   }
 
   h2{
@@ -452,6 +470,17 @@ img {
 
   .cart{
     padding-top: 20vh;
+  }
+
+  .add-item-section{
+    padding-top: 20vh;
+  }
+
+  .mini-pic{
+    width: 70%;
+    height: 80%;
+    align-items: center;
+    margin: 0 auto;
   }
 
 }

@@ -15,18 +15,26 @@ module.exports = {
     },
     createItem: async(req, res) => {
         const db = req.app.get('db')
-        const {name, description, price, active} = req.body;
+        const {name, description, displayPrice, is_active, main_img_url} = req.body;
         const date_created = new Date()
-        newItem = await db.items.create_item(name, description, price, date_created, active)
 
-        //NOT SURE HOW TO INSERT INTO item_images multiple rows
-        // if(newItem){
-        //     const id = newItem.item_id
-        //     newImages = await db.items.add_images(id, image_url)
+        try{
+            const newItem = await db.items.create_item(name, description, displayPrice, date_created, is_active, main_img_url)
+    
+            //NOT SURE HOW TO INSERT INTO item_images multiple rows
+            // if(newItem){
+            //     const id = newItem.item_id
+            //     newImages = await db.items.add_images(id, image_url)
+    
+            // }
+    
+            res.status(200).send(newItem)
 
-        // }
-
-        res.status(200).send(newItem)
+        }
+        catch(err) { 
+            console.log(err)
+            res.sendStatus(500)
+        }
     },
     readItem: async(req, res) => {
         const db = req.app.get('db')
@@ -85,7 +93,7 @@ module.exports = {
                 var updatedItemImages = [];
                 for(let i = 0; i < image_urls.length; i++){
                     const el_img_url = image.urls[i]
-                    const addedOneItem = await db.items.add_images(id, el_img_url)
+                    const addedOneItem = await db.items.add_images(id, el_img_url[0])
                     updatedItemImages.push(addedOneItem)
                     console.log('added one Item', addedOneItem)
                 }

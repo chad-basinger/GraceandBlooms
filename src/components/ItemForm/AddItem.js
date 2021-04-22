@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import UploadImage from '../AWS-SDK/UploadImage'
+import UploadImageOnCreate from '../AWS-SDK/UploadImageOnCreate'
 import axios from 'axios'
 
 class AddItem extends Component {
@@ -8,7 +8,7 @@ class AddItem extends Component {
         this.state = {
             name: '',
             description: '',
-            // main_img_url: '',
+            main_img_url: '',
             // image_urls: [],
             displayPrice: '',
             // size: '',
@@ -40,17 +40,20 @@ class AddItem extends Component {
         this.setState({[name]: value})
     }
 
-    // handleSubmitAdd = () => {
-    //     const {size, price, index} = this.state;
-    //     var newsizeList = this.state.sizeList.push(
-    //         {
-    //             sl_index: index + 1,
-    //             sl_size: size,
-    //             sl_price: price
-    //         })
-    //     this.setState({sizeList: newsizeList})
-    //     console.log(this.state.sizeList, 'sizeList')
-    // }
+    createListing = () => {
+        const {name, description, displayPrice, is_active, main_img_url} = this.state;
+        axios.post('/api/item/add', {name, description, displayPrice, is_active, main_img_url})
+        .then(_ => {
+            this.reset()
+            this.props.history.push('/');
+        })
+       
+    }
+
+    onAddMainImage = (img) => {
+        this.setState({main_img_url: img})
+        console.log(this.state.main_img_url)
+    }
 
     // handleDeleteStateSize = (index) => {
     //     var newsizeList = this.state.sizeList.splice( index, 1)
@@ -64,16 +67,18 @@ class AddItem extends Component {
     // })
     // .catch (err => console.log(err))
 
-    // reset(){
-    //     this.setState({size: ''})
-    //     this.setState({price: ''})
-    // }
+    reset = () => {
+        this.setState({size: ''})
+        this.setState({price: ''})
+        this.setState({description: ''})
+        this.setState({is_active: true})
+    }
 
 
 
     render(){
         return (
-            <div>
+            <div className='add-item-section'>
                 <p>
                     Name of Item: 
                     <input name='name' onChange={this.handleInput} id='itemName' placeholder='item name'/>
@@ -89,8 +94,10 @@ class AddItem extends Component {
                 <div>
                     *Add a Size/Price in the Edit Item form after creating the listing* 
                 </div>
+                <img src={this.state.main_img_url} alt={this.state.main_img_url}/>
+                <UploadImageOnCreate onAddMainImage={this.onAddMainImage}/>
                 <div>
-                    *Add images in the Edit Item form after creating the listing* 
+                    *Add more images in the Edit Item form after creating the listing* 
                 </div>
                 {/* <div>
                     {this.state.sizeList.map((el, index) => {
@@ -109,7 +116,7 @@ class AddItem extends Component {
                     })}
                 </div> */}
                 <div>
-                    <button>Create Item Listing</button>
+                    <button onClick={this.createListing}>Create Item Listing</button>
                 </div>
 
             </div>
