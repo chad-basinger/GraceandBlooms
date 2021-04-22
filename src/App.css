@@ -530,7 +530,7 @@ nav button{
 @media (min-width: 481px){
   .header{
     background-color: rgb(194, 44, 89);
-    
+
   }
 }
 
@@ -541,10 +541,11 @@ nav button{
   }
 }
 
-/* Large Screens - Desktops/Monitors */
+/* Large Screens - Desktops/Monitors  TESTING FUN*/
 @media (min-width: 1025px) and (max-width: 1200px){
   .header{
     background-color: navajowhite;
+    
   }
 }
 
