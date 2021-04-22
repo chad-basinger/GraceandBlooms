@@ -217,7 +217,7 @@ class ViewItem extends Component {
         if(this.props.user.user.is_admin === true)
         return (
                 <section className='view-item-section'>
-                    <div
+                    <div className='edit-item-button'
                         onClick={
                                     () => this.goToItemView(`/editItem/${this.props.match.params.id}`)
                                     }>
@@ -227,9 +227,9 @@ class ViewItem extends Component {
                         {Item.item_name}
                         {this.state.currentPrice}
                     </h2>
-                    <p>{Item.item_description}</p>
+                    <p className='view-item-description'>{Item.item_description}</p>
                     {/* <Dropdown options={options} onChange={this._onSelect, this.onSelect} value={'Select a Size'} placeholder="Select an option" />; */}
-                    <div>
+                    <div className='quantity'>
                         <p>Quantity:</p>
                         <button onClick={() => this.decreaseQ()}>-</button>
                         <span>{this.state.quantity}</span>
@@ -250,7 +250,7 @@ class ViewItem extends Component {
                             
                         )
                     })}
-                    <button onClick={() => this.addToCart()}>Add to Cart</button>
+                    <button className='submit-button' onClick={() => this.addToCart()}>Add to Cart</button>
                     <div id="success">Successfully added to the cart!</div>
                     <div id="login-required">Please login before completing your order.</div>
                     <div id="choose-size">Please select a bracelet size.</div>
@@ -258,14 +258,7 @@ class ViewItem extends Component {
         )
         else{
             return (
-                <div className='view-item-section'>
-                    {/* <div
-                        onClick={
-                                    () => this.goToItemView(`/editItem/${this.props.match.params.id}`)
-                                    }>
-                        <button>Edit Item</button>
-                    </div> */}
-                    <section>
+                    <section className='view-item-section'>
                         <h2>
                             {Item.item_name}
                             {this.state.currentPrice}
@@ -292,12 +285,11 @@ class ViewItem extends Component {
                                 
                             )
                         })}
-                        <button onClick={() => this.addToCart()}>Add to Cart</button>
+                        <button className='submit-button' onClick={() => this.addToCart()}>Add to Cart</button>
                         <div id="success">Successfully added to the cart!</div>
                         <div id="login-required">Please login before completing your order.</div>
                         <div id="choose-size">Please select a bracelet size.</div>
                     </section>
-                </div>
             )
         }
     }
