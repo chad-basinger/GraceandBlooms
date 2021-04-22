@@ -61,8 +61,8 @@ class Home extends Component {
         return (
             <div className='home-section'>
                 
-                <div className='tool-bar-for-item-list'>
-                    Search Input here, Filter By:
+                <div className='Introduction'>
+                    All bracelets are handmade with an extra scoop of a mother's love.
                 </div>
                 
                 <div className="items">

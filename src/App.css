@@ -3,6 +3,10 @@
   flex-direction: column; 
 }
 
+.introduction{
+  font-family:Lucida;
+}
+
 .App-header {
   background-color: rgb(230, 146, 238);
   width: 100%;
@@ -352,6 +356,12 @@ img {
     display: flex;
     overflow: auto;
   }
+
+  .introduction{
+    
+    font-family:'Lucida Sans';
+  }
+
   .App-header{
     position: fixed;
     width: 100vw;
@@ -438,6 +448,10 @@ img {
     width: 200px;
     height: 50px;
     margin: 0 auto;
+  }
+
+  .cart{
+    padding-top: 20vh;
   }
 
 }

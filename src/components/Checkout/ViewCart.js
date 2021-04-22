@@ -61,6 +61,7 @@ class ViewCart extends Component {
       this.setState({
         cart: res.data
       })
+      console.log('state cart after clear cart', this.state.cart)
     })
     .catch(err => console.log(err))
   }
@@ -73,7 +74,7 @@ class ViewCart extends Component {
       <section className="cart">
   
         <header>
-          <h2>your cart</h2>
+          <h2>YOUR CART</h2>
           <h4 className="empty-cart">
               is currently empty
           </h4>
@@ -113,7 +114,7 @@ class ViewCart extends Component {
             total <span>${this.state.total}</span>
           </h4>
         </div>
-        <button className="btn clear-btn" onClick={() => this.clearCart}>clear cart</button>
+        <button className="btn clear-btn" onClick={this.clearCart}>clear cart</button>
       </footer>
       <CheckoutNew total={this.state.total} name={'Grace and Blooms Bracelets'}/>
       {/* <button onClick={() => this.props.history.push(`/viewCart/checkout`)}>Checkout/Pay with Card</button> */}
