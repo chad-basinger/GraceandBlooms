@@ -79,18 +79,20 @@ class AddItem extends Component {
     render(){
         return (
             <div className='add-item-section'>
-                <p>
+                <div>
                     Name of Item: 
                     <input name='name' onChange={this.handleInput} id='itemName' placeholder='item name'/>
-                </p>
-                <p>
+                </div>
+                <div>
                     Display Price: 
                     <input name='displayPrice' onChange={this.handleInput} id='displayPrice' placeholder='price displayed on listing'/>
-                </p>
-                <p>
+                </div>
+                <div className='description-div'>
+                    <p>
                     Item Description: 
-                    <input name='description' onChange={this.handleInput} id='item-description' placeholder='item description'/>
-                </p>
+                    </p>
+                    <input id='text' label='desc' className='input-description' value={this.state.description} onChange={this.handleInput} id='item-description' placeholder='item description'/>
+                </div>
                 <div>
                     *Add a Size/Price in the Edit Item form after creating the listing* 
                 </div>
