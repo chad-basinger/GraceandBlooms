@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {HashRouter} from 'react-router-dom'
+import {HashRouter, BrowserRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
 
 //store
 import {store} from './dux/store'
 import { saveState } from './localStorage';
+const Router = process.env.NODE_ENV === 'development' ? HashRouter : BrowserRouter
 
 // const cartItems = [
 //   {
@@ -48,11 +49,11 @@ store.subscribe(() => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter>
+    <Router>
       <Provider store={store}>
       <App/>
       </Provider>
-    </HashRouter>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
