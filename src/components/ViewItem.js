@@ -224,8 +224,12 @@ class ViewItem extends Component {
                         <button>Edit Item</button>
                     </div>
                     <h2>
-                        {Item.item_name}
-                        {this.state.currentPrice}
+                        <p>
+                            {Item.item_name}
+                        </p>
+                        <p className='view-item-price'>
+                            {this.state.currentPrice}
+                        </p>
                     </h2>
                     <p className='view-item-description'>{Item.item_description}</p>
                     {/* <Dropdown options={options} onChange={this._onSelect, this.onSelect} value={'Select a Size'} placeholder="Select an option" />; */}
@@ -260,11 +264,15 @@ class ViewItem extends Component {
             return (
                     <section className='view-item-section'>
                         <h2>
-                            {Item.item_name}
-                            {this.state.currentPrice}
+                            <p>
+                                {Item.item_name}
+                            </p>
+                            <p className='view-item-price'>
+                                {this.state.currentPrice}
+                            </p>
                         </h2>
-                        <p>{Item.item_description}</p>
-                        <div>
+                        <p className='view-item-description'>{Item.item_description}</p>
+                        <div className='quantity'>
                             <p>Quantity:</p>
                             <button onClick={() => this.decreaseQ()}>-</button>
                             <span>{this.state.quantity}</span>
