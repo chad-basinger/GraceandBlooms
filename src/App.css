@@ -4,7 +4,8 @@
 }
 .App {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
+  background-color: var(--main-bg-color);
 }
 
 .introduction{
@@ -28,7 +29,7 @@
   position:relative;
   width: 100%;
   height: 100vh;
-  background:var(--main-bg-color);
+  background-color:var(--main-bg-color);
   background-position: fill;
   display: flex;
   flex-direction: column;
@@ -38,7 +39,7 @@
 }
 
 section{
-  background: var(--main-bg-color);
+  background-color: var(--main-bg-color);
 }
 
 .header {
@@ -133,6 +134,7 @@ nav button{
 .auth{
   display: flex;
   flex-direction: column;
+  background-color: var(--main-bg-color);
 }
 
 #success {
@@ -626,19 +628,113 @@ label:hover {
   }
 }
 
-/* SMALL SCREENS - LAPTOPS */
+/* SMALL SCREENS - small LAPTOPS */
 @media (min-width: 769px){
   .header{
     background-color: rgb(71, 192, 87);
   }
 }
 
-/* Large Screens - Desktops/Monitors  TESTING FUN*/
+/* Large Screens - Laptops Desktops/Monitors  TESTING FUN  and (max-width: 1200px)  MAYBE NEED THIS <=*/
 @media (min-width: 1025px) and (max-width: 1200px){
   .header{
-    background-color: navajowhite;
-    
+    background-color:var(--main-bg-color);
   }
+
+  .logo{
+    font-size: xx-large;
+    align-self: center;
+    margin: 0 auto;
+  }
+
+  .items{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .individual-item{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    word-wrap: normal;
+    background-color: white;
+    /* padding: 10px; */
+    margin: 40px;
+  }
+
+  .individual-item:hover{
+    transform: scale(1.2);
+    border-style: groove;
+  }
+
+  .individual-item span{
+    font-size: 20px;
+    font-family: 'Lucida Sans';
+    font-style: italic;
+  }
+
+  .nav-menu button{
+    position: relative;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-around;
+    width:150px;
+    height: 60px;
+    border: white 1px;
+    color: black;
+    background-color:white;
+    border-radius: 5px;
+  }
+
+  .nav-menu button:hover{
+    border-style: groove;
+    transform: scale(1.1);
+  }
+
+  .add-item-section img{
+    width: 400px;
+    height: 300px;
+  }
+
+  .mini-pic{
+    display: flex;
+    align-items: center;
+    /* margin: 0 auto; */
+    margin-top: 10px;
+    width: 350px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .view-item-main-img{
+    width: 500px;
+    height: auto;
+  }
+
+  .view-item-section .submit-button{
+    width: 200px;
+    height: 50px;
+    position: fixed;
+    right:    0;
+    bottom:   0;
+  }
+
+  .edit-item-section{
+    padding-top: 20vh;
+  }
+
+  .edit-item-section .submit-button{
+    width: 200px;
+    height: 50px;
+    position: fixed;
+    right:    0;
+    bottom:   0;
+  }
+
 }
 
 @keyframes spin {
