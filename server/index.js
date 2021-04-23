@@ -12,6 +12,9 @@ const auth = require('./middleware/authMiddleware');
 
 app.use(express.json())
 
+//Include this with your other top-level middleware
+app.use(express.static(`${__dirname}/../build`))
+
 const {SERVER_PORT, DB_CONNECTION, SESSION_SECRET} = process.env
 
 app.use(session({

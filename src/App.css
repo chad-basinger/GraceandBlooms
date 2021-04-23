@@ -57,6 +57,7 @@ section{
   position: relative;
   margin-left: 20px;
   font-size: xx-large;
+  font: white;
 }
 
 .nav-menu {
@@ -436,7 +437,7 @@ label:hover {
   }
   .logo{
     font-size: medium;
-    color: black;
+    color: white;
     /* tells what animation to use */
     /* animation-name: spin;
     /* tell how long to run animation */

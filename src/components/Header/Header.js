@@ -34,7 +34,7 @@ class Header extends Component {
                         if(!this.props.user.is_admin){
                         return (
                             <div className='header'>
-                                <h1 className='logo'>Grace and Blooms Bracelet Co.</h1>
+                                <h1 className='logo'>Grace + Blooms Bracelet Co.</h1>
                                 
                                 <nav className='nav-menu'>
                                     <Link to='/'>
@@ -55,7 +55,7 @@ class Header extends Component {
                     }else {
                         return (
                             <div className='header'>
-                                <h1 className='logo'>Grace and Blooms Bracelet Co.</h1>
+                                <h1 className='logo'>Grace + Blooms Bracelet Co.</h1>
                                 
                                 <nav className='nav-menu'>
                                     <Link to='/'>
@@ -80,7 +80,7 @@ class Header extends Component {
             else{
                 return (
                         <div className='header'>
-                                <h1 className='logo'>Grace and Blooms Bracelet Co.</h1>
+                                <h1 className='logo'>Grace + Blooms Bracelet Co.</h1>
                                 
                                 <nav className='nav-menu'>
                                     <Link to='/'>
