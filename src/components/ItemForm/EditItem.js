@@ -122,6 +122,7 @@ class EditItem extends Component {
     render(){
 
         const Item = this.props.itemReducer.itemViewed.item[0]
+        console.log('Item', Item)
         return(
             <div className='edit-item-section'>
                 <p>

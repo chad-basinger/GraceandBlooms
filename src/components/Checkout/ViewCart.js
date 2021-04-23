@@ -89,34 +89,38 @@ class ViewCart extends Component {
         <h2>your cart</h2>
       </header>
       {/* cart items */}
-      <article>
-        
-        {this.state.cart.map((element, index) => {
-          console.log('element', element)
-          return (
-            <div key={index}>
-              <p>{element.item_id}</p>
-              <p>{element.item_name}</p>
-              <img src={element.main_img_url} alt='cart-item-img'/>
-              <p>Quantity: {element.quantity}</p>
-              <p>{element.size_price}</p>
+      <div className='cart-article-section'>
+        <article className='cart-article'>
+          
+          {this.state.cart.map((element, index) => {
+            console.log('element', element)
+            return (
+              <div className='cart-item' key={index}>
+                <p>{element.item_id}</p>
+                <p>{element.item_name}</p>
+                <img className='cart-img' src={element.main_img_url} alt='cart-item-img'/>
+                <p>Size: {element.size}</p>
+                <p>Quantity: {element.quantity}</p>
+                <p className='cart-item-price'>Each/{element.size_price}</p>
 
 
-            </div>
-          )
-        })}
-      </article>
+              </div>
+            )
+          })}
+        </article>
+
+      </div>
       {/* cart footer */}
-      <footer>
         <hr />
+      <footer>
         <div className="cart-total">
           <h4>
             total <span>${this.state.total}</span>
           </h4>
         </div>
-        <button className="btn clear-btn" onClick={this.clearCart}>clear cart</button>
-      </footer>
+        <button className="clear-btn" onClick={this.clearCart}>clear cart</button>
       <CheckoutNew total={this.state.total} name={'Grace and Blooms Bracelets'}/>
+      </footer>
       {/* <button onClick={() => this.props.history.push(`/viewCart/checkout`)}>Checkout/Pay with Card</button> */}
     </section>
   );

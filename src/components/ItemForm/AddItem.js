@@ -53,6 +53,18 @@ class AddItem extends Component {
     onAddMainImage = (img) => {
         this.setState({main_img_url: img})
         console.log(this.state.main_img_url)
+        this.showImage()
+    }
+
+    showImage() {
+        // Get the snackbar DIV
+        var x = document.getElementById("item-img-added");
+      
+        // Add the "show" class to DIV
+        x.className = "show";
+      
+        // // After 3 seconds, remove the show class from DIV
+        // setTimeout(function(){ x.className = x.className.replace("show", ""); });
     }
 
     // handleDeleteStateSize = (index) => {
@@ -96,7 +108,7 @@ class AddItem extends Component {
                 <div>
                     *Add a Size/Price in the Edit Item form after creating the listing* 
                 </div>
-                <img className='add-item-img' src={this.state.main_img_url} alt={this.state.main_img_url}/>
+                <img id='item-img-added' className='' src={this.state.main_img_url} alt={this.state.main_img_url}/>
                 <UploadImageOnCreate onAddMainImage={this.onAddMainImage}/>
                 <div>
                     *Add more images in the Edit Item form after creating the listing* 
