@@ -60,10 +60,19 @@ class Home extends Component {
 
         return (
             <div className='home-section'>
-                
-                <div className='Introduction'>
-                    All bracelets are handmade with an extra scoop of a mother's love.
+                <input type="checkbox" id="expend" />
+                <div className="medium-12 small-12 columns smalldesc">
+                <p className="font16 ">
+                        PLEASE measure before ordering! Instructions on how to measure are in the FAQ section.
+
+                        If you are ordering more than 3 of the same bracelet, please send me a message. Bulk orders are welcome!
+
+                        Use code: LOCAL to skip the shipping and pick up for free if you are local to Kaysville, Utah!
+                </p>
                 </div>
+                <p>Pretty bracelets for minis, mamas, and everyone in between!✨</p>
+                <label for="expend">PLEASE READ BEFORE ORDERING!</label>
+                
                 
                 <div className="items">
                     

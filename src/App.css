@@ -1,5 +1,6 @@
 :root {
-  --main-bg-color: rgb(229, 182, 233);
+  --main-bg-color: rgb(228, 163, 156);
+  --toast-color: rgb(214, 216, 79);
 }
 .App {
   display: flex;
@@ -11,7 +12,7 @@
 }
 
 .App-header {
-  background-color: rgb(230, 146, 238);
+  background-color:var(--main-bg-color);
   width: 100%;
   height: 10vh;
   font-family: fantasy;
@@ -67,7 +68,7 @@ section{
 
 /* all buttons under the nav */
 nav button{
-  background-color: rgb(236, 224, 152);
+  background-color: white;
   height: 50px;
   width: 100px;
   align-items: center;
@@ -145,8 +146,8 @@ nav button{
   padding: 16px; /* Padding */
   position: fixed; /* Sit on top of the screen */
   z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  top: 100px; /* 30px from the bottom */
+  top: 50%;
+  left: 50%;
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
@@ -164,21 +165,23 @@ nav button{
   margin-top: 10%;
   -webkit-animation: fadein 1.0s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  top: 50%;
+  left: 50%;
 }
 
 #login-required {
   visibility: hidden; /* Hidden by default. Visible on click */
   min-width: 250px; /* Set a default minimum width */
   margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: rgb(219, 119, 177); /* Black background color */
+  background-color: rgb(214, 216, 79); /* Black background color */
   color: black; /* White text color */
   text-align: center; /* Centered text */
   border-radius: 2px; /* Rounded borders */
   padding: 16px; /* Padding */
   position: fixed; /* Sit on top of the screen */
   z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  top: 100px; /* 30px from the bottom */
+  top: 50%;
+  left: 50%;
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
@@ -196,6 +199,8 @@ nav button{
   margin-top: 10%;
   -webkit-animation: fadein 1.0s, fadeout 0.5s 4s;
   animation: fadein 0.5s, fadeout 0.5s 4s;
+  top: 50%;
+  left: 50%;
 }
 
 #choose-size {
@@ -209,8 +214,10 @@ nav button{
   padding: 16px; /* Padding */
   position: fixed; /* Sit on top of the screen */
   z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  top: 100px; /* 30px from the bottom */
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  /* transform: translate(-50%, -50%) */
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
@@ -218,7 +225,7 @@ nav button{
   visibility: visible; /* Show the snackbar */
   /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
   However, delay the fade out process for 2.5 seconds */
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -228,6 +235,10 @@ nav button{
   margin-top: 10%;
   -webkit-animation: fadein 1.0s, fadeout 0.5s 4s;
   animation: fadein 0.5s, fadeout 0.5s 4s;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  /* transform: translate(-50%, -50%) */
 }
 
 #added-image {
@@ -241,8 +252,8 @@ nav button{
   padding: 16px; /* Padding */
   position: fixed; /* Sit on top of the screen */
   z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  top: 100px; /* 30px from the bottom */
+  top: 50%;
+  left: 50%;/* 30px from the bottom */
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
@@ -260,6 +271,8 @@ nav button{
   margin-top: 10%;
   -webkit-animation: fadein 1.0s, fadeout 0.5s 4s;
   animation: fadein 0.5s, fadeout 0.5s 4s;
+  top: 50%;
+  left: 50%;
 }
 
 #register-toast {
@@ -273,8 +286,10 @@ nav button{
   padding: 16px; /* Padding */
   position: fixed; /* Sit on top of the screen */
   z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  top: 100px; /* 30px from the bottom */
+  /* left: 50%; /* Center the snackbar 
+  top: 100px; 30px from the bottom */
+  top: 50%;
+  left: 50%;
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
@@ -292,6 +307,8 @@ nav button{
   margin-top: 10%;
   -webkit-animation: fadein 1.0s, fadeout 0.5s 4s;
   animation: fadein 0.5s, fadeout 0.5s 4s;
+  top: 50%;
+  left: 50%;
 }
 
 .edit-item-section{
@@ -299,6 +316,7 @@ nav button{
   justify-content: left;
   flex-direction: column;
   align-items: left;
+  width: auto;
 }
 
 .edit-item-main-img{
@@ -338,8 +356,7 @@ nav button{
   padding: 10px 24px;
   font-size: 16px;
   border-radius: 8px;
-  background-color: rgb(235, 210, 142);
-  border: 2px solid #318d14;
+  background-color: white;
   margin-top: 20px;
 }
 
@@ -350,6 +367,38 @@ nav button{
   flex-direction: column;
 }
 
+.home-section p{
+  font-family:'Lucida Sans';
+}
+
+#expend {
+  display:none;  
+}
+
+#expend + .smalldesc {
+  max-height:0px;
+  overflow:hidden;
+  transition:all .3s ease;
+}
+
+#expend:checked + .smalldesc {
+  max-height:250px;  
+}
+
+.home-section label {
+  color:rgb(63, 63, 245);
+  text-decoration:underline;
+  cursor:pointer;
+  display: flex;
+  left: 50%;
+  right: 50%;
+  
+}
+
+label:hover {
+  text-decoration:none;  
+}
+
 /* MOBILE PHONES */
 @media (min-width: 100px){
   .App{
@@ -358,10 +407,11 @@ nav button{
     overflow: auto;
   }
 
-  .introduction{
-
+  /* .introduction{
     font-family:'Lucida Sans';
-  }
+    font-size: 20px;
+    margin-top: 5px;
+  } */
 
   .App-header{
     position: fixed;
@@ -369,9 +419,10 @@ nav button{
     height: 20vh;
     z-index: 1;
     margin: 0;
+    border-bottom: 5px dotted white;
   }
   .header{
-    background-color: white;
+    background-color: var(--main-bg-color);
     width: 100vw;
     height: 20vh;
     display: inline-block;
@@ -401,7 +452,7 @@ nav button{
     height: 40px;
     border: black 10px;
     color: black;
-    background-color:rgb(233, 96, 215);
+    background-color:white;
     border-radius: 5px;
   }
 
@@ -417,7 +468,6 @@ nav button{
     width: 100vw;
     height: 100vh;
     overflow: auto;
-    
   }
 
   .individual-item{
@@ -443,7 +493,7 @@ nav button{
     padding-top: 20vh;
     width: 100%;
     height: fit-content;
-    background: rgb(229, 182, 233);
+    background: var(--main-bg-color);
     background-size: fill;
   }
 
@@ -602,3 +652,4 @@ nav button{
     transform: rotate(90deg);
   }
 }
+

@@ -250,7 +250,7 @@ class ViewItem extends Component {
                             
                         )
                     })}
-                    <button className='submit-button' onClick={() => this.addToCart()}>Add to Cart</button>
+                    <button className='submit-button' onClick={this.addToCart}>Add to Cart</button>
                     <div id="success">Successfully added to the cart!</div>
                     <div id="login-required">Please login before completing your order.</div>
                     <div id="choose-size">Please select a bracelet size.</div>

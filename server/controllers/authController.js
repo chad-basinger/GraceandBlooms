@@ -4,7 +4,7 @@ module.exports = {
     register: async(req, res) => {
         const db = req.app.get('db');
         const {email, password} = req.body;
-        if(email != '' && password != ''){
+        if(email != '' && password != '' && email.includes('@')){
 
             try {
                 const result = await db.users.find_user_by_email([email])
