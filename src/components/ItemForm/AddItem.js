@@ -91,12 +91,12 @@ class AddItem extends Component {
                     <p>
                     Item Description: 
                     </p>
-                    <input id='text' label='desc' className='input-description' value={this.state.description} onChange={this.handleInput} id='item-description' placeholder='item description'/>
+                    <input className='input-description' onChange={this.handleInput} id='item-description' placeholder='item description'/>
                 </div>
                 <div>
                     *Add a Size/Price in the Edit Item form after creating the listing* 
                 </div>
-                <img src={this.state.main_img_url} alt={this.state.main_img_url}/>
+                <img className='add-item-img' src={this.state.main_img_url} alt={this.state.main_img_url}/>
                 <UploadImageOnCreate onAddMainImage={this.onAddMainImage}/>
                 <div>
                     *Add more images in the Edit Item form after creating the listing* 
