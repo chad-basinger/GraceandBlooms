@@ -73,6 +73,8 @@ nav button{
   height: 50px;
   width: 100px;
   align-items: center;
+  font-family:'Lucida Sans';
+  font-style: italic;
 }
 
 .item-list {
@@ -450,8 +452,8 @@ label:hover {
     position: relative;
     display: flex;
     justify-content: space-around;
-    width:70px;
-    height: 40px;
+    width:80px;
+    height: 50px;
     border: black 10px;
     color: black;
     background-color:white;
@@ -468,7 +470,6 @@ label:hover {
     padding-top: 20vh;
     height: 100vh;
     width: 100vw;
-    height: 100vh;
     overflow: auto;
   }
 
@@ -679,7 +680,7 @@ label:hover {
 
   .nav-menu button{
     position: relative;
-    font-size: 15px;
+    font-size: 20px;
     display: flex;
     justify-content: space-around;
     width:150px;
