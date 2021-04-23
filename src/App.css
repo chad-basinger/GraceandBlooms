@@ -727,6 +727,18 @@ label:hover {
     padding-top: 20vh;
   }
 
+  .add-item-section{
+    padding-top: 25vh;
+  }
+
+  .add-item-section .submit-button{
+    width: 200px;
+    height: 50px;
+    position: fixed;
+    right:    0;
+    bottom:   0;
+  }
+
   .edit-item-section .submit-button{
     width: 200px;
     height: 50px;

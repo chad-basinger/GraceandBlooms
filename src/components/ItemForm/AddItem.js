@@ -118,7 +118,7 @@ class AddItem extends Component {
                     })}
                 </div> */}
                 <div>
-                    <button onClick={this.createListing}>Create Item Listing</button>
+                    <button className='submit-button' onClick={this.createListing}>Create Item Listing</button>
                 </div>
 
             </div>
