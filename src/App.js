@@ -1,4 +1,5 @@
 import './App.css';
+import './mobile.css'
 import { Component } from 'react';
 import Header from './components/Header/Header'
 import routes from './routes'

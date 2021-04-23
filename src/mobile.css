@@ -1,0 +1,247 @@
+/* MOBILE PHONES */
+@media only screen 
+  and (min-width: 320px)
+  and (max-device-width: 896px) {
+  .App{
+    position: fixed;
+    display: flex;
+    overflow: auto;
+  }
+
+  .App-header{
+    position: fixed;
+    width: 100vw;
+    height: auto;
+    max-height: 40vh;
+    z-index: 1;
+    margin: 0;
+    border-bottom: 5px dotted white;
+  }
+  .header{
+    background-color: var(--main-bg-color);
+    width: 100vw;
+    height: auto;
+    max-height: 40vh;
+    display: inline-block;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .logo{
+    font-size: medium;
+    color: white;
+    /* tells what animation to use */
+    /* animation-name: spin;
+    /* tell how long to run animation */
+    /* animation-duration: 2s;
+    /* specify how many times the animation should run */
+    /* animation-iteration-count: infinite; */
+    /* we can change the animations direction */
+    /* animation-direction:alternate; */
+    /* we can smooth our animations */
+    /* animation-timing-function: linear; */ 
+  }
+  .nav-menu button{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    width:80px;
+    height: 50px;
+    border: black 10px;
+    color: black;
+    background-color:white;
+    border-radius: 5px;
+  }
+
+  .main-section{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
+
+  .home-section{
+    padding-top: 20vh;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+  }
+
+  .individual-item{
+  border-radius: 30px;
+  
+  }
+
+  .individual-item img{
+    border-radius: 30px 30px 0px 0px;
+  }
+
+  .item-title-text{
+    margin: 0 auto;
+  }
+
+  .item-price{
+    margin: 0 auto;
+  }
+
+  .view-item-section{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20vh;
+    width: 100vw;
+    height: fit-content;
+    background: var(--main-bg-color);
+    background-size: fill;
+    padding-bottom: 10vh;
+  }
+
+  .view-item-section img{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+
+  .view-item-main-img{
+    width: 300px;
+    height: auto;
+  }
+
+  /* .view-item-section div{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 10px;
+  } */
+
+  .view-item-description{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+
+  .quantity{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .quantity button{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  section{
+    background: rgb(229, 182, 233);
+  }
+
+  h2{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .auth{
+    padding-top: 20vh;
+    display:flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    align-items: center;
+  }
+
+  .input-auth {
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  input{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+  }
+
+  .submit-button{
+    position: fixed;
+    display: flex;
+    width: 50vw;
+    height: 5vh;
+    bottom: 0;
+    right: 25%;
+    margin-top: 10vh;
+    align-items: center;
+    justify-content: center;
+  }
+  .edit-item-button{
+    width: 60vw;
+    height: 10vh;
+    margin: 0 auto;
+  }
+
+  .cart{
+    padding-top: 20vh;
+    width: 90%;
+    background-color: var(--main-bg-color);
+  }
+
+  .cart-article-section{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .cart-img{
+    width: 300px;
+    height: auto;
+  }
+
+
+  .cart article img{
+    width: 500px;
+  }
+
+  .add-item-section{
+    padding-top: 25vh;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .select{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .description-div{
+    display: inline-flex;
+
+  }
+
+  .input-description{
+    width: 80vw;
+    height: 40px;
+    align-self: center;
+  }
+
+  select{
+    width: 70vw;
+    margin: 0 auto;
+  }
+
+}
