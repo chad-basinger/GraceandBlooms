@@ -408,8 +408,8 @@ label:hover {
 }
 
 /* MOBILE PHONES */
-@media only screen 
-  and (min-width: 320px)
+@media
+  (min-width: 320px)
   and (max-device-width: 896px) {
   .App{
     position: fixed;
