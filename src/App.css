@@ -403,9 +403,9 @@ nav button{
   
 }
 
-label:hover {
+/* label:hover {
   text-decoration:none;  
-}
+} */
 
 /* MOBILE PHONES */
 @media
@@ -704,8 +704,9 @@ label:hover {
   }
 
   .individual-item:hover{
+    border: 2px solid white;
     transform: scale(1.1);
-    border-style: groove;
+
   }
 
   .individual-item span{
@@ -729,7 +730,6 @@ label:hover {
 
   .nav-menu button:hover{
     border-style: groove;
-    transform: scale(1.1);
   }
 
   .add-item-section img{
