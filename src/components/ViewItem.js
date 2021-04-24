@@ -223,15 +223,15 @@ class ViewItem extends Component {
                                     }>
                         <button>Edit Item</button>
                     </div>
-                    <h2>
+                    <h2 className='name-price-description'>
                         <p>
                             {Item.item_name}
                         </p>
                         <p className='view-item-price'>
                             {this.state.currentPrice}
                         </p>
+                        <p className='view-item-description'>{Item.item_description}</p>
                     </h2>
-                    <p className='view-item-description'>{Item.item_description}</p>
                     {/* <Dropdown options={options} onChange={this._onSelect, this.onSelect} value={'Select a Size'} placeholder="Select an option" />; */}
                     <div className='quantity'>
                         <p>Quantity:</p>

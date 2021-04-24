@@ -493,15 +493,23 @@ nav button{
   }
 
   .view-item-section{
+    position: relative;
     display: flex;
     flex-direction: column;
     padding-top: 20vh;
     width: 100vw;
-    height: auto;
+    height: fit-content;
     overflow: auto;
     background: var(--main-bg-color);
     background-size: fill;
     padding-bottom: 10vh;
+  }
+
+  .name-price-description{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: auto;
   }
 
   .view-item-section img{
