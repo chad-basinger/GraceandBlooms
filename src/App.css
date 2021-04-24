@@ -497,7 +497,8 @@ nav button{
     flex-direction: column;
     padding-top: 20vh;
     width: 100vw;
-    height: fit-content;
+    height: auto;
+    overflow: auto;
     background: var(--main-bg-color);
     background-size: fill;
     padding-bottom: 10vh;
