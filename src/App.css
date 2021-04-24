@@ -429,11 +429,11 @@ nav button{
     background-color: var(--main-bg-color);
     width: 100vw;
     height: auto;
-    max-height: 40vh;
     display: inline-block;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    overflow: auto;
 
   }
   .logo{
@@ -504,8 +504,8 @@ nav button{
   }
 
   .view-item-section img{
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
     margin: 0 auto;
     margin-top: 10px;
   }
@@ -523,6 +523,7 @@ nav button{
   } */
 
   .view-item-description{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -531,6 +532,7 @@ nav button{
   }
 
   .quantity{
+    position: relative;
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
@@ -547,6 +549,7 @@ nav button{
   }
 
   h2{
+    position: relative;
     display: flex;
     justify-content: space-around;
   }
@@ -586,6 +589,18 @@ nav button{
     bottom: 0;
     right: 25%;
     margin-top: 10vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .auth-button{
+    display: flex;
+    width: 50vw;
+    height: 10vh;
+    margin-top: 10vh;
+    border-radius: 8px;
+    background-color: white;
+    margin: 0 auto;
     align-items: center;
     justify-content: center;
   }

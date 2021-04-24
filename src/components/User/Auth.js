@@ -97,7 +97,7 @@ class Auth extends Component {
                 <div className='input-auth'>
                     <input placeholder='example: superCoolMe@gmail.com' name='email' onChange={this.handleInput}/>
                     <input placeholder='password' name='password' onChange={this.handleInput}/> 
-                    <button className='submit-button' onClick={this.handleSubmit}>Register</button>
+                    <button className='auth-button' onClick={this.handleSubmit}>Register</button>
                 </div>
                 <div id="register-toast">Successfully Registered!</div>
             </section>
@@ -119,7 +119,7 @@ class Auth extends Component {
                     <input placeholder='example: superCoolMe@gmail.com' name='email' onChange={this.handleInput}/>
                     <input placeholder='password' name='password' onChange={this.handleInput}/>
                     
-                    <button className='submit-button' onClick={this.handleSubmit}>Sign In</button>
+                    <button className='auth-button' onClick={this.handleSubmit}>Sign In</button>
                 </div>
                 <div id="register-toast">Successfully Registered!</div>
             </section>
