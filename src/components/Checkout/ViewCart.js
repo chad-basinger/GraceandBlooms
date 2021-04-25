@@ -120,7 +120,10 @@ class ViewCart extends Component {
           </h4>
         </div>
         <button className="clear-btn" onClick={this.clearCart}>Clear Cart</button>
-      <CheckoutNew total={this.state.total} name={'Grace and Blooms Bracelets'}/>
+      {/* <CheckoutNew total={this.state.total} name={'Grace and Blooms Bracelets'}/> */}
+      <p>Working on fixing a bug with payment processing. 
+      </p>
+        <button onClick={() => window.location.href = 'https://www.etsy.com/shop/graceandbloomsco/'}>Complete Order here</button>
       </footer>
       {/* <button onClick={() => this.props.history.push(`/viewCart/checkout`)}>Checkout/Pay with Card</button> */}
     </section>

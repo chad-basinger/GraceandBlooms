@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 
 toast.configure()
-// const {STRIPE_PUBLISHABLE_KEY} = process.env
+// const {STRIPE_PUBLISHABLE_KEY} = process.env.prod
 
 export default function CheckoutNew (props) {
     // constructor(props){
@@ -42,7 +42,7 @@ export default function CheckoutNew (props) {
       }
 
       function handleToken (token, addresses) {
-          console.log(token, addresses)
+          console.log(token, addresses, 'tokenadd')
       }
     
     
@@ -52,7 +52,7 @@ export default function CheckoutNew (props) {
     
                 </div>
                 <StripeCheckout 
-                stripeKey='pk_test_51Ifs8VCJOqgNi9m25KvT5fbS1MPYnWPMYsBExoeRjMqOYGnF25vgy4kPnZwXmVZMBg5KD2dMLNEdexZ09nqNXKhZ00JgFQ8IST'
+                stripeKey= 'pk_test_51Ifs8VCJOqgNi9m25KvT5fbS1MPYnWPMYsBExoeRjMqOYGnF25vgy4kPnZwXmVZMBg5KD2dMLNEdexZ09nqNXKhZ00JgFQ8IST'
                 token={handleToken}
                 billingAddress
                 shippingAddress
