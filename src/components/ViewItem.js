@@ -54,9 +54,10 @@ class ViewItem extends Component {
         let item_id = this.props.match.params.id
         axios.get(`/api/admin/getChosenSizeID/${item_id}/${size}`)
         .then(res => {
-            console.log(res.data[0].size_id, 'this is res data')
+            console.log(res.data[0], 'this is res data')
             this.setState({chosenSizeID: res.data[0].size_id})
-            console.log(this.state.chosenSizeID, 'CHOSEN SIZE ID')
+            this.setState({chosenSize: res.data[0].size})
+            console.log(this.state.chosenSize, 'CHOSEN SIZE')
         })
         .catch(err => console.log(err))
         console.log('e target', e.target.value)
@@ -239,6 +240,7 @@ class ViewItem extends Component {
                         <span>{this.state.quantity}</span>
                         <button onClick={() => this.increaseQ()}>+</button>    
                     </div>
+                    <p>Size Selected: {this.state.chosenSize}</p>
                     {/* <label for='sizes'>Choose a bracelet length:</label> */}
                     <select value={this.state.sizeList} onChange={this.onSelect} id='sizes'>
                         <option value={this.state.chosenSize} label={this.state.chosenSize}>{this.state.chosenSize}</option>

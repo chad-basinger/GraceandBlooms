@@ -95,7 +95,7 @@ class Auth extends Component {
                 <h1>{mode.toUpperCase()}</h1>
 
                 <div className='input-auth'>
-                    <input placeholder='example: superCoolMe@gmail.com' name='email' onChange={this.handleInput}/>
+                    <input placeholder='example: superCoolMe@gmail.com' name='email' onChange={this.handleInput} content="initial-scale=1, maximum-scale=1"/>
                     <input placeholder='password' name='password' onChange={this.handleInput}/> 
                     <button className='auth-button' onClick={this.handleSubmit}>Register</button>
                 </div>
