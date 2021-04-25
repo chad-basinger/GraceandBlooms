@@ -646,8 +646,10 @@ nav button{
 
   .cart{
     padding-top: 20vh;
-    width: 90%;
+    width: 100%;
+    height: auto;
     background-color: var(--main-bg-color);
+    padding-bottom: 25%;
   }
 
   .cart-article-section{
@@ -657,18 +659,20 @@ nav button{
 
   .cart-item{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
+
   }
 
   .cart-img{
-    width: 300px;
+    width: 100vw;
     height: auto;
   }
 
 
   .cart article img{
-    width: 500px;
+    width: 95vw;
+    margin-right: 5%;
   }
 
   .add-item-section{
@@ -943,6 +947,7 @@ nav button{
   footer {
     position: relative;
     float: right;
+
   }
   .clear-btn{
     margin-bottom: 20px;

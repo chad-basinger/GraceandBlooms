@@ -17,6 +17,16 @@ class Auth extends Component {
         this.handleRegisterModeChange = this.handleRegisterModeChange.bind(this)
     }
 
+    // zoomOutMobile = () => {
+    //     const viewport = document.querySelector('meta[name="viewport"]');
+    //     console.log('VIEWPORT', viewport)
+    
+    //     if ( viewport ) {
+    //       viewport.content = `'initial-scale=1', 'width=device-width'`;
+    //       viewport.content = 'width=device-width';
+    //     }
+    //   }
+
     handleMode = e => {
         // console.log(e.target.name)
         this.setState({mode: e.target.name})
@@ -47,6 +57,7 @@ class Auth extends Component {
             // this.props.loginUser(res.data)
             this.showToastRegister()
             this.handleRegisterModeChange()
+            // this.zoomOutMobile()
         })
         .catch (err => console.error(err))
         }
@@ -57,6 +68,7 @@ class Auth extends Component {
             console.log(res.data, 'LOGIN POST RAN')
             this.props.loginUser(res.data)
             // this.showToastLogin()
+            // this.zoomOutMobile()
             await new Promise(resolve => setTimeout(resolve, 1000));
             this.props.history.push('/');
         })

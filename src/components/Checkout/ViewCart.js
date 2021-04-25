@@ -76,7 +76,7 @@ class ViewCart extends Component {
         <header>
           <h2>YOUR CART</h2>
           <h4 className="empty-cart">
-              is currently empty
+              is currently empty!
           </h4>
         </header>
       </section>
@@ -86,7 +86,7 @@ class ViewCart extends Component {
     <section className="cart">
       {/* cart header */}
       <header>
-        <h2>your cart</h2>
+        <h2>CART</h2>
       </header>
       {/* cart items */}
       <div className='cart-article-section'>
@@ -96,6 +96,7 @@ class ViewCart extends Component {
             console.log('element', element)
             return (
               <div className='cart-item' key={index}>
+                <br/>
                 <p>{element.item_id}</p>
                 <p>{element.item_name}</p>
                 <img className='cart-img' src={element.main_img_url} alt='cart-item-img'/>
@@ -118,7 +119,7 @@ class ViewCart extends Component {
             total <span>${this.state.total}</span>
           </h4>
         </div>
-        <button className="clear-btn" onClick={this.clearCart}>clear cart</button>
+        <button className="clear-btn" onClick={this.clearCart}>Clear Cart</button>
       <CheckoutNew total={this.state.total} name={'Grace and Blooms Bracelets'}/>
       </footer>
       {/* <button onClick={() => this.props.history.push(`/viewCart/checkout`)}>Checkout/Pay with Card</button> */}
