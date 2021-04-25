@@ -923,11 +923,22 @@ nav button{
     padding-top: 20vh;
     width: 90%;
     background-color: var(--main-bg-color);
+    margin-bottom: 0;
+  }
+
+  .home-section{
+    padding-top: 20vh;
+    width: 100vw;
+    height: 100%;
+    overflow-y:auto;
+    margin-bottom: 0;
+    background-color: var(--main-bg-color);
   }
 
   .cart-article-section{
     display: flex;
     flex-direction: column;
+    margin-bottom: 0;
   }
 
   .cart-item{
