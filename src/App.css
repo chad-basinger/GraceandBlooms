@@ -869,6 +869,11 @@ nav button{
     flex-direction: column;
   }
 
+  .auth-button{
+    width: 200px;
+    height: 75px;
+  }
+
   .auth-choice{
     margin-top: 20px;
 
@@ -975,6 +980,8 @@ nav button{
   #item-img-added.show {
     visibility: visible; /* Show the snackbar */
   }
+
+  
 
 }
 
